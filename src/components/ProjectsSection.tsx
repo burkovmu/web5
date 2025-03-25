@@ -78,7 +78,7 @@ export default function ProjectsSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative"
               >
-                <div className="relative h-[300px] md:h-[700px] overflow-hidden rounded-2xl">
+                <div className="relative h-[500px] md:h-[700px] overflow-hidden rounded-2xl">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-[#111113]/80 to-transparent z-10" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111113] via-transparent to-transparent z-10" />
                   <Image
@@ -90,7 +90,7 @@ export default function ProjectsSection() {
                 </div>
 
                 <div className={`absolute top-1/2 -translate-y-1/2 left-6 right-6 md:left-12 md:right-12 z-20 max-w-xl`}>
-                  <div className="space-y-4 md:space-y-8">
+                  <div className="space-y-6 md:space-y-8">
                     <div className="flex items-center gap-3 md:gap-4">
                       <span className="text-[#feda6a] text-sm font-stolzl tracking-wider">
                         {String(index + 1).padStart(2, '0')}
