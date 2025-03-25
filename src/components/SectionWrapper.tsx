@@ -22,7 +22,7 @@ export default function SectionWrapper({ children, className = '' }: SectionWrap
   return (
     <section ref={sectionRef} className={`relative overflow-hidden min-h-screen flex items-center ${className}`}>
       <motion.div 
-        className="w-full"
+        className="w-full md:block hidden"
         style={{
           opacity,
           scale,
@@ -31,6 +31,9 @@ export default function SectionWrapper({ children, className = '' }: SectionWrap
       >
         {children}
       </motion.div>
+      <div className="w-full md:hidden">
+        {children}
+      </div>
     </section>
   );
 } 
