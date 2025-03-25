@@ -78,7 +78,7 @@ export default function ProjectsSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative"
               >
-                <div className="relative h-[700px] overflow-hidden rounded-2xl">
+                <div className="relative h-[400px] md:h-[700px] overflow-hidden rounded-2xl">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-[#111113]/80 to-transparent z-10" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111113] via-transparent to-transparent z-10" />
                   <Image
