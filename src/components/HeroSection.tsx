@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import WaveBackground from './WaveBackground';
-import Image from 'next/image';
 
 const features = [
   { number: '01', title: 'Веб-разработка', description: 'Современные технологии' },
