@@ -37,14 +37,14 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-32 bg-[#111113] overflow-hidden">
+    <section id="projects" className="py-16 md:py-32 bg-[#111113] overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-start mb-20">
+        <div className="flex flex-col items-start mb-12 md:mb-20">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-6"
+            className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-4 md:mb-6"
           >
             Наши проекты
           </motion.span>
@@ -52,7 +52,7 @@ export default function ProjectsSection() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-7xl font-stolzl text-[#d4d4dc] mb-6"
+            className="text-4xl md:text-7xl font-stolzl text-[#d4d4dc] mb-4 md:mb-6"
           >
             Последние работы
           </motion.h2>
@@ -64,7 +64,7 @@ export default function ProjectsSection() {
           />
         </div>
 
-        <div className="space-y-32">
+        <div className="space-y-16 md:space-y-32">
           {projects.map((project, index) => (
             <Link 
               href={`/projects/${project.id}`} 
@@ -78,7 +78,7 @@ export default function ProjectsSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative"
               >
-                <div className="relative h-[400px] md:h-[700px] overflow-hidden rounded-2xl">
+                <div className="relative h-[300px] md:h-[700px] overflow-hidden rounded-2xl">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-[#111113]/80 to-transparent z-10" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111113] via-transparent to-transparent z-10" />
                   <Image
@@ -89,24 +89,24 @@ export default function ProjectsSection() {
                   />
                 </div>
 
-                <div className={`absolute top-1/2 -translate-y-1/2 ${index % 2 === 0 ? 'left-12' : 'right-12'} z-20 max-w-xl`}>
-                  <div className="space-y-8">
-                    <div className="flex items-center gap-4">
+                <div className={`absolute top-1/2 -translate-y-1/2 left-6 right-6 md:left-12 md:right-12 z-20 max-w-xl`}>
+                  <div className="space-y-4 md:space-y-8">
+                    <div className="flex items-center gap-3 md:gap-4">
                       <span className="text-[#feda6a] text-sm font-stolzl tracking-wider">
                         {String(index + 1).padStart(2, '0')}
                       </span>
-                      <h3 className="text-5xl font-stolzl text-white group-hover:text-[#feda6a] transition-colors duration-300">
+                      <h3 className="text-3xl md:text-5xl font-stolzl text-white group-hover:text-[#feda6a] transition-colors duration-300">
                         {project.title}
                       </h3>
                     </div>
-                    <p className="text-gray-200 text-xl leading-relaxed max-w-lg">
+                    <p className="text-gray-200 text-base md:text-xl leading-relaxed max-w-lg">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-3 py-1.5 bg-white/5 backdrop-blur-sm rounded-full text-xs font-stolzl text-gray-400 border border-white/5 group-hover:bg-white/10 group-hover:text-gray-300 group-hover:border-white/10 transition-all duration-300"
+                          className="px-2.5 py-1 md:px-3 md:py-1.5 bg-white/5 backdrop-blur-sm rounded-full text-xs font-stolzl text-gray-400 border border-white/5 group-hover:bg-white/10 group-hover:text-gray-300 group-hover:border-white/10 transition-all duration-300"
                         >
                           {tech}
                         </span>
@@ -116,11 +116,11 @@ export default function ProjectsSection() {
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.5 + index * 0.1 }}
-                      className="flex items-center gap-3 text-[#feda6a] group-hover:gap-4 transition-all duration-300"
+                      className="flex items-center gap-2 md:gap-3 text-[#feda6a] group-hover:gap-4 transition-all duration-300"
                     >
-                      <span className="text-base font-stolzl">Подробнее</span>
+                      <span className="text-sm md:text-base font-stolzl">Подробнее</span>
                       <svg 
-                        className="w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" 
+                        className="w-5 h-5 md:w-6 md:h-6 transform group-hover:translate-x-1 transition-transform duration-300" 
                         fill="none" 
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
