@@ -55,7 +55,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0], index: n
       onMouseLeave={() => setIsHovered(false)}
       className="relative group"
     >
-      <div className="relative overflow-hidden bg-[#111113] p-12 h-full border border-[#393f4d] transition-all duration-500">
+      <div className="relative overflow-hidden bg-[#111113] p-6 md:p-12 h-full border border-[#393f4d] transition-all duration-500">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ 
@@ -69,7 +69,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0], index: n
 
         <div className="relative z-10">
           <motion.div 
-            className="text-2xl font-stolzl text-[#d4d4dc]/20 mb-4"
+            className="text-xl md:text-2xl font-stolzl text-[#d4d4dc]/20 mb-4"
             animate={{ 
               x: isHovered ? 20 : 0,
               opacity: isHovered ? 0.4 : 0.2
@@ -80,7 +80,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0], index: n
           </motion.div>
 
           <motion.h3 
-            className="text-5xl font-stolzl text-[#d4d4dc] mb-6"
+            className="text-3xl md:text-5xl font-stolzl text-[#d4d4dc] mb-4 md:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2 + 0.4 }}
@@ -89,7 +89,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0], index: n
           </motion.h3>
 
           <motion.p 
-            className="text-[#d4d4dc]/60 font-stolzl mb-12 text-lg"
+            className="text-[#d4d4dc]/60 font-stolzl mb-8 md:mb-12 text-base md:text-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: index * 0.2 + 0.5 }}
@@ -97,7 +97,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0], index: n
             {service.description}
           </motion.p>
 
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             {service.features.map((feature, i) => (
               <motion.div
                 key={i}
@@ -109,10 +109,10 @@ const ServiceCard = ({ service, index }: { service: typeof services[0], index: n
                     delay: index * 0.2 + 0.6 + i * 0.1
                   }
                 }}
-                className="flex items-center space-x-3 group"
+                className="flex items-center space-x-2 md:space-x-3 group"
               >
-                <div className="w-[1px] h-4 bg-[#feda6a]/20 group-hover:bg-[#feda6a] transition-colors duration-300" />
-                <span className="text-[#d4d4dc]/60 font-stolzl group-hover:text-[#feda6a] transition-colors duration-300">
+                <div className="w-[1px] h-3 md:h-4 bg-[#feda6a]/20 group-hover:bg-[#feda6a] transition-colors duration-300" />
+                <span className="text-sm md:text-base text-[#d4d4dc]/60 font-stolzl group-hover:text-[#feda6a] transition-colors duration-300">
                   {feature}
                 </span>
               </motion.div>
