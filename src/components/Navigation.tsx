@@ -116,7 +116,7 @@ export default function Navigation() {
                   className="flex flex-col sm:flex-row items-center justify-between gap-8 pt-12 border-t border-white/10"
                 >
                   <div className="flex gap-8">
-                    {socialLinks.map((link, index) => (
+                    {socialLinks.map((link) => (
                       <motion.a
                         key={link.name}
                         href={link.href}
