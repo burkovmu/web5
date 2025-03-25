@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 const menuItems = [
   { name: 'Главная', href: '#hero', number: '01' },
@@ -20,6 +21,12 @@ const socialLinks = [
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+
+  const handleLinkClick = (href: string) => {
+    setIsOpen(false);
+    router.push(href);
+  };
 
   return (
     <>
@@ -82,7 +89,7 @@ export default function Navigation() {
                     >
                       <Link
                         href={item.href}
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => handleLinkClick(item.href)}
                         className="flex items-baseline gap-4 py-2"
                       >
                         <span className="text-[#feda6a] font-light text-lg opacity-60 group-hover:opacity-100 transition-opacity duration-300">
