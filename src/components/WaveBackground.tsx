@@ -18,8 +18,8 @@ export default function WaveBackground() {
     // Генерируем частицы
     const generateParticles = () => {
       const newParticles = Array.from({ length: 50 }, () => ({
-        x: Math.random() * 100,
-        y: Math.random() * 100,
+        x: Math.random() * 80 + 20, // От 20% до 100% по X
+        y: Math.random() * 80 + 20, // От 20% до 100% по Y
         size: Math.random() * 2 + 1,
         speed: Math.random() * 0.5 + 0.2,
         opacity: Math.random() * 0.3 + 0.1

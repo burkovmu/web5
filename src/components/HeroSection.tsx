@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import WaveBackground from './WaveBackground';
+import HeroBackground from './HeroBackground';
 
 const features = [
   { number: '01', title: 'Веб-разработка', description: 'Современные технологии' },
@@ -12,8 +12,8 @@ const features = [
 
 export default function HeroSection() {
   return (
-    <div className="bg-[#111113] min-h-screen flex items-center relative overflow-hidden py-20 md:py-0">
-      <WaveBackground />
+    <div className="min-h-screen flex items-center relative overflow-hidden py-20 md:py-0">
+      <HeroBackground />
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div 
@@ -22,17 +22,8 @@ export default function HeroSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="absolute -left-4 top-0 text-[#feda6a]/5 text-7xl font-light select-none"
-            >
-              Студия
-            </motion.div>
-
-            <div className="relative pl-8">
-              <div className="absolute -left-4 top-0 w-[2px] h-full bg-[#feda6a]/20" />
+            <div className="relative md:pl-8">
+              <div className="absolute -left-4 top-0 w-[2px] h-full bg-[#feda6a]/10" />
               
               <div className="space-y-8">
                 <motion.span 
