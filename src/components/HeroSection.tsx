@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import HeroBackground from './HeroBackground';
+import Link from 'next/link';
 
 const features = [
   { number: '01', title: 'Веб-разработка', description: 'Современные технологии' },

@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useRef } from 'react';
 import SectionWrapper from './SectionWrapper';
+import AnimatedBackground from './AnimatedBackground';
 
 const services = [
   {
@@ -33,29 +34,14 @@ const services = [
 
 const ServiceCard = ({ service, index }: { service: typeof services[0], index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
 
   return (
     <motion.div
-      ref={cardRef}
-      style={{
-        y,
-        opacity,
-        scale
-      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="relative group"
     >
-      <div className="relative overflow-hidden bg-[#111113] p-6 md:p-12 h-full border border-[#393f4d] transition-all duration-500">
+      <div className="relative overflow-hidden p-6 md:p-12 h-full border border-[#393f4d]/5 transition-all duration-500">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ 
@@ -119,13 +105,6 @@ const ServiceCard = ({ service, index }: { service: typeof services[0], index: n
             ))}
           </div>
         </div>
-
-        <motion.div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{
-            background: 'linear-gradient(135deg, rgba(254,218,106,0.03) 0%, transparent 100%)'
-          }}
-        />
       </div>
     </motion.div>
   );
@@ -133,42 +112,17 @@ const ServiceCard = ({ service, index }: { service: typeof services[0], index: n
 
 export default function ServicesSection() {
   return (
-    <SectionWrapper className="bg-[#111113] py-32">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 0.03, scale: 1 }}
-        transition={{ duration: 1 }}
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px]"
-        style={{
-          background: 'radial-gradient(circle at center, #feda6a 0%, transparent 70%)',
-          filter: 'blur(60px)'
-        }}
-      />
-
-      <div className="container mx-auto px-4">
+    <SectionWrapper className="relative">
+      <AnimatedBackground variant="services" />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-start mb-20">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-[#d4d4dc]/60 uppercase tracking-[0.3em] text-xs font-stolzl mb-6"
-          >
+          <span className="text-[#d4d4dc]/60 uppercase tracking-[0.3em] text-xs font-stolzl mb-6">
             Наши услуги
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-7xl font-stolzl text-[#d4d4dc] mb-6"
-          >
+          </span>
+          <h2 className="text-7xl font-stolzl text-[#d4d4dc] mb-6">
             Что мы предлагаем
-          </motion.h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="w-[120px] h-[1px] bg-[#feda6a]"
-          />
+          </h2>
+          <div className="w-[120px] h-[1px] bg-[#feda6a]" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

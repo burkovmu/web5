@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import SectionWrapper from './SectionWrapper';
+import AnimatedBackground from './AnimatedBackground';
 
 const budgets = [
   '50 000 – 200 000 ₽',
@@ -19,37 +20,83 @@ const projectTypes = [
   'Другое'
 ];
 
+const socialLinks = [
+  { name: 'Telegram', url: 'https://t.me/mishlenteam' },
+  { name: 'WhatsApp', url: 'https://wa.me/message/YWPQD6DCDXBPA1' },
+  { name: 'Instagram', url: '#' },
+  { name: 'GitHub', url: 'https://github.com/burkovmu' }
+];
+
 export default function ContactSection() {
   return (
-    <SectionWrapper className="bg-[#111113] relative">
-      <div className="lg:ml-20"> {/* Отступ только для десктопа */}
-        <div className="flex flex-col lg:flex-row min-h-screen">
+    <SectionWrapper className="relative">
+      <AnimatedBackground variant="contact" />
+      <div className="w-[95%] mx-auto relative z-10">
+        <div className="flex flex-col items-center mb-20">
+          <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-6">
+            Связаться
+          </span>
+          <h2 className="text-7xl font-stolzl text-[#d4d4dc] mb-6 text-center">
+            Готовы обсудить проект?
+          </h2>
+          <div className="w-[120px] h-[1px] bg-[#feda6a]" />
+        </div>
+        
+        <div className="flex flex-col lg:flex-row min-h-screen -mx-4">
           {/* Левая часть с заголовком */}
           <div className="lg:w-1/3 bg-[#feda6a] p-8 lg:p-16 flex items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
+              className="w-full"
             >
-              <h2 className="text-4xl lg:text-6xl font-stolzl text-[#1d1e22] leading-tight mb-6">
-                Давайте создадим что-то особенное
+              <h2 className="text-4xl lg:text-5xl font-stolzl text-[#1d1e22] leading-tight mb-8">
+                Свяжитесь с нами любым удобным способом
               </h2>
-              <p className="text-[#1d1e22]/80 text-lg">
-                Расскажите о своих идеях, и мы поможем воплотить их в жизнь, используя современные технологии и креативный подход.
-              </p>
+              <div className="space-y-6">
+                <div>
+                  <div className="text-[#1d1e22]/60 text-sm uppercase tracking-wider mb-2">Email</div>
+                  <a href="mailto:info@web3dev.com" className="text-[#1d1e22] text-lg hover:underline">
+                    info@web3dev.com
+                  </a>
+                </div>
+                <div>
+                  <div className="text-[#1d1e22]/60 text-sm uppercase tracking-wider mb-2">Телефон</div>
+                  <a href="tel:+79991234567" className="text-[#1d1e22] text-lg hover:underline">
+                    +7 (999) 123-45-67
+                  </a>
+                </div>
+                <div>
+                  <div className="text-[#1d1e22]/60 text-sm uppercase tracking-wider mb-4">Социальные сети</div>
+                  <div className="flex gap-4">
+                    {socialLinks.map((link) => (
+                      <a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#1d1e22] hover:text-[#1d1e22]/70 transition-colors"
+                      >
+                        {link.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
 
           {/* Правая часть с формой */}
-          <div className="lg:w-2/3 p-8 lg:p-16 overflow-y-auto">
+          <div className="lg:w-2/3 p-8 lg:p-16 lg:pl-24 overflow-y-auto">
             <motion.form 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="space-y-8 max-w-5xl mx-auto"
+              className="space-y-8"
             >
               {/* Основная информация */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <label className="block text-[#feda6a] text-sm uppercase tracking-wider">Имя</label>
                   <input 
@@ -93,7 +140,7 @@ export default function ContactSection() {
               {/* Бюджет */}
               <div className="space-y-3">
                 <label className="block text-[#feda6a] text-sm uppercase tracking-wider">Планируемый бюджет</label>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                   {budgets.map((budget) => (
                     <label 
                       key={budget}
@@ -113,7 +160,7 @@ export default function ContactSection() {
               </div>
 
               {/* Контакты */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <label className="block text-[#feda6a] text-sm uppercase tracking-wider">Email</label>
                   <input 

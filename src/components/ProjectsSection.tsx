@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import AnimatedBackground from './AnimatedBackground';
 
 const projects = [
   {
@@ -37,31 +38,17 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-16 md:py-32 bg-[#111113] overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="relative py-16 md:py-32 overflow-hidden">
+      <AnimatedBackground variant="projects" />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-start mb-12 md:mb-20">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-4 md:mb-6"
-          >
+          <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-4 md:mb-6">
             Наши проекты
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-4xl md:text-7xl font-stolzl text-[#d4d4dc] mb-4 md:mb-6"
-          >
+          </span>
+          <h2 className="text-4xl md:text-7xl font-stolzl text-[#d4d4dc] mb-4 md:mb-6">
             Последние работы
-          </motion.h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="w-[120px] h-[1px] bg-[#feda6a]"
-          />
+          </h2>
+          <div className="w-[120px] h-[1px] bg-[#feda6a]" />
         </div>
 
         <div className="space-y-16 md:space-y-32">
@@ -73,8 +60,7 @@ export default function ProjectsSection() {
             >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative"
               >
@@ -114,7 +100,7 @@ export default function ProjectsSection() {
                     </div>
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.5 + index * 0.1 }}
                       className="flex items-center gap-2 md:gap-3 text-[#feda6a] group-hover:gap-4 transition-all duration-300"
                     >

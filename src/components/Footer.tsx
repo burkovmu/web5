@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import AnimatedBackground from './AnimatedBackground';
 
 const socialLinks = [
   { name: 'Telegram', url: 'https://t.me/mishlenteam' },
@@ -19,8 +20,9 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111113] relative overflow-hidden">
-      <div className="lg:ml-20"> {/* Отступ только для десктопа */}
+    <footer className="relative overflow-hidden">
+      <AnimatedBackground variant="contact" />
+      <div className="lg:ml-20 relative z-10"> {/* Добавляем z-index для всего контента */}
         <div className="container mx-auto px-4 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             {/* Левая колонка */}
@@ -36,18 +38,9 @@ export default function Footer() {
                   <h3 className="text-3xl lg:text-4xl font-stolzl text-[#d4d4dc] mb-6">
                     Давайте создадим<br />что-то особенное
                   </h3>
-                  <p className="text-[#d4d4dc]/60 text-lg max-w-md mb-8">
+                  <p className="text-[#d4d4dc]/60 text-lg max-w-md">
                     Свяжитесь с нами, чтобы обсудить ваш проект и начать воплощать идеи в жизнь
                   </p>
-                  <Link 
-                    href="/contacts"
-                    className="inline-block w-full md:w-auto px-8 py-4 bg-[#feda6a] text-[#1d1e22] font-medium group overflow-hidden relative"
-                  >
-                    <div className="absolute inset-0 bg-[#111113] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                    <span className="relative z-10 group-hover:text-[#feda6a] transition-colors duration-300">
-                      Начать проект
-                    </span>
-                  </Link>
                 </div>
               </motion.div>
             </div>
