@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { useEffect, useState, useMemo, useRef } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
 
 export default function HeroBackground() {
   const [isClient, setIsClient] = useState(false);
@@ -84,7 +84,7 @@ export default function HeroBackground() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [mouseX, mouseY]);
 
   return (
     <div className="absolute inset-0 overflow-hidden z-0">
