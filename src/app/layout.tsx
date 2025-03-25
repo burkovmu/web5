@@ -1,11 +1,16 @@
-import './globals.css';
 import type { Metadata } from 'next';
-import CustomCursor from '@/components/CustomCursor';
-import { bounded } from './fonts';
+import localFont from 'next/font/local';
+import './globals.css';
+import Navigation from '@/components/Navigation';
+
+const bounded = localFont({
+  src: './fonts/Bounded-ExtraLight.ttf',
+  variable: '--font-bounded'
+});
 
 export const metadata: Metadata = {
-  title: 'Web Studio',
-  description: 'Создаем современные веб-сайты',
+  title: 'Web3 Development',
+  description: 'Professional Web3 Development Services',
 };
 
 export default function RootLayout({
@@ -14,10 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ru" className={bounded.variable}>
-      <body>
+    <html lang="en">
+      <body className={`${bounded.variable} font-bounded`}>
+        <Navigation />
         {children}
-        <CustomCursor />
       </body>
     </html>
   );
