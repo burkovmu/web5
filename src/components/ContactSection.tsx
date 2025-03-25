@@ -32,11 +32,11 @@ export default function ContactSection() {
     <SectionWrapper className="relative">
       <AnimatedBackground variant="contact" />
       <div className="w-[95%] mx-auto relative z-10">
-        <div className="flex flex-col items-center mb-20">
+        <div className="flex flex-col items-start mb-20">
           <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-6">
             Связаться
           </span>
-          <h2 className="text-7xl font-stolzl text-[#d4d4dc] mb-6 text-center">
+          <h2 className="text-7xl font-stolzl text-[#d4d4dc] mb-6">
             Готовы обсудить проект?
           </h2>
           <div className="w-[120px] h-[1px] bg-[#feda6a]" />

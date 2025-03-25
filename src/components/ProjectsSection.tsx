@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
+import SectionWrapper from './SectionWrapper';
 import AnimatedBackground from './AnimatedBackground';
 
 const projects = [
@@ -11,121 +12,126 @@ const projects = [
     title: 'Аренда автомобилей в Дубае',
     description: 'Разработка современного веб-сайта для аренды автомобилей премиум-класса в Дубае с удобной системой бронирования и оплаты.',
     image: '/project1.jpg',
-    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS']
+    category: 'Web Development',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    link: '/projects/project1'
   },
   {
     id: 'project2',
     title: 'Аренда Спец Техники',
     description: 'Создание специализированной платформы для аренды строительной и специальной техники с расширенным каталогом и системой управления заказами.',
     image: '/project2.jpg',
-    technologies: ['Vue.js', 'Node.js', 'MongoDB', 'Express']
+    category: 'Full Stack',
+    technologies: ['Vue.js', 'Node.js', 'MongoDB', 'Express'],
+    link: '/projects/project2'
   },
   {
     id: 'project3',
     title: 'Сервисный центр техники Apple',
     description: 'Разработка современного сайта для сервисного центра по ремонту техники Apple с системой отслеживания статуса ремонта.',
     image: '/project3.jpg',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Express']
+    category: 'Web App',
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
+    link: '/projects/project3'
   },
   {
     id: 'project4',
     title: 'Сайт для ресторана',
     description: 'Создание современного сайта для ресторана с системой онлайн-бронирования столиков и доставки еды.',
     image: '/project4.jpg',
-    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js']
+    category: 'Web Development',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js'],
+    link: '/projects/project4'
   }
 ];
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="relative py-16 md:py-32 overflow-hidden">
+    <SectionWrapper className="relative py-48">
       <AnimatedBackground variant="projects" />
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col items-start mb-12 md:mb-20">
-          <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-4 md:mb-6">
+        <div className="flex flex-col items-start mb-20">
+          <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-6">
             Наши проекты
           </span>
-          <h2 className="text-4xl md:text-7xl font-stolzl text-[#d4d4dc] mb-4 md:mb-6">
+          <h2 className="text-7xl font-stolzl text-[#d4d4dc] mb-6">
             Последние работы
           </h2>
           <div className="w-[120px] h-[1px] bg-[#feda6a]" />
         </div>
 
-        <div className="space-y-16 md:space-y-32">
+        <div className="grid grid-cols-1 gap-32">
           {projects.map((project, index) => (
-            <Link 
-              href={`/projects/${project.id}`} 
-              key={index}
-              className={`group block ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className="group"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative"
-              >
-                <div className="relative h-[500px] md:h-[700px] overflow-hidden rounded-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-[#111113]/80 to-transparent z-10" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111113] via-transparent to-transparent z-10" />
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
+              <Link href={project.link} className="block">
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
+                  index % 2 === 0 ? '' : 'lg:flex-row-reverse'
+                }`}>
+                  {/* Изображение проекта */}
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#feda6a]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
 
-                <div className={`absolute top-1/2 -translate-y-1/2 left-6 right-6 md:left-12 md:right-12 z-20 max-w-xl`}>
-                  <div className="space-y-6 md:space-y-8">
-                    <div className="flex items-center gap-3 md:gap-4">
-                      <span className="text-[#feda6a] text-sm font-stolzl tracking-wider">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className="text-3xl md:text-5xl font-stolzl text-white group-hover:text-[#feda6a] transition-colors duration-300">
+                  {/* Информация о проекте */}
+                  <div className="relative">
+                    <div className="absolute -left-4 top-0 w-[2px] h-full bg-[#feda6a]/20 group-hover:bg-[#feda6a] transition-colors duration-500" />
+                    <div className="pl-8">
+                      <div className="flex items-center gap-4 mb-4">
+                        <span className="text-[#feda6a] text-sm font-stolzl tracking-wider">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span className="text-[#feda6a]/60 text-sm uppercase tracking-wider">
+                          {project.category}
+                        </span>
+                      </div>
+                      
+                      <h3 className="text-4xl lg:text-5xl font-stolzl text-[#d4d4dc] mb-6 group-hover:text-[#feda6a] transition-colors duration-300">
                         {project.title}
                       </h3>
+                      
+                      <p className="text-[#d4d4dc]/60 text-lg mb-8 leading-relaxed max-w-xl">
+                        {project.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-3 mb-8">
+                        {project.technologies.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-4 py-2 bg-[#1d1e22]/40 backdrop-blur-sm rounded-full text-sm text-[#d4d4dc]/60 border border-[#393f4d]/20 group-hover:border-[#feda6a]/20 group-hover:text-[#feda6a]/80 transition-all duration-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="inline-flex items-center gap-3 text-[#feda6a] group-hover:translate-x-2 transition-transform duration-300">
+                        <span className="text-sm uppercase tracking-wider">Подробнее</span>
+                        <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
+                          <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
                     </div>
-                    <p className="text-gray-200 text-base md:text-xl leading-relaxed max-w-lg">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-2.5 py-1 md:px-3 md:py-1.5 bg-white/5 backdrop-blur-sm rounded-full text-xs font-stolzl text-gray-400 border border-white/5 group-hover:bg-white/10 group-hover:text-gray-300 group-hover:border-white/10 transition-all duration-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 + index * 0.1 }}
-                      className="flex items-center gap-2 md:gap-3 text-[#feda6a] group-hover:gap-4 transition-all duration-300"
-                    >
-                      <span className="text-sm md:text-base font-stolzl">Подробнее</span>
-                      <svg 
-                        className="w-5 h-5 md:w-6 md:h-6 transform group-hover:translate-x-1 transition-transform duration-300" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth={2} 
-                          d="M14 5l7 7m0 0l-7 7m7-7H3" 
-                        />
-                      </svg>
-                    </motion.div>
                   </div>
                 </div>
-              </motion.div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 } 
