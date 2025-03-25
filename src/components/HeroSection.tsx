@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import WaveBackground from './WaveBackground';
+import Image from 'next/image';
 
 const features = [
   { number: '01', title: 'Веб-разработка', description: 'Современные технологии' },
@@ -12,7 +13,7 @@ const features = [
 
 export default function HeroSection() {
   return (
-    <div className="bg-[#111113] min-h-screen flex items-center relative overflow-hidden">
+    <div className="bg-[#111113] min-h-screen flex items-center relative overflow-hidden py-20 md:py-0">
       <WaveBackground />
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -48,7 +49,7 @@ export default function HeroSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="text-7xl font-light text-[#d4d4dc] leading-tight"
+                  className="text-5xl md:text-7xl font-light text-[#d4d4dc] leading-tight"
                 >
                   Создаем сайты,<br />
                   достойные<br />
@@ -59,12 +60,12 @@ export default function HeroSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="text-[#d4d4dc]/60 text-lg max-w-md"
+                  className="text-[#d4d4dc]/60 text-base md:text-lg max-w-md"
                 >
                   Мы разрабатываем инновационные цифровые решения, которые превосходят ожидания
                 </motion.p>
 
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
