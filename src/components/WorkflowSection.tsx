@@ -28,62 +28,6 @@ const workflowSteps = [
   }
 ];
 
-const WorkflowCard = ({ step, index }: { step: typeof workflowSteps[0], index: number }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <motion.div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative group"
-    >
-      <div className="relative overflow-hidden p-6 md:p-12 h-full border border-[#393f4d]/5 transition-all duration-500">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ 
-            opacity: isHovered ? 1 : 0,
-            scale: isHovered ? 1 : 0.8,
-            x: isHovered ? 0 : -20
-          }}
-          transition={{ duration: 0.5 }}
-          className="absolute top-0 left-0 w-full h-1 bg-[#feda6a]"
-        />
-
-        <div className="relative z-10">
-          <motion.div 
-            className="text-xl md:text-2xl font-stolzl text-[#d4d4dc]/20 mb-4"
-            animate={{ 
-              x: isHovered ? 20 : 0,
-              opacity: isHovered ? 0.4 : 0.2
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            0{index + 1}
-          </motion.div>
-
-          <motion.h3 
-            className="text-3xl md:text-5xl font-stolzl text-[#d4d4dc] mb-4 md:mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.2 + 0.4 }}
-          >
-            {step.title}
-          </motion.h3>
-
-          <motion.p 
-            className="text-[#d4d4dc]/60 font-stolzl mb-8 md:mb-12 text-base md:text-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: index * 0.2 + 0.5 }}
-          >
-            {step.description}
-          </motion.p>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 export default function WorkflowSection() {
   return (
     <SectionWrapper className="relative pb-48">

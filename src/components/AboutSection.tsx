@@ -1,9 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import SectionWrapper from './SectionWrapper';
 import AnimatedBackground from './AnimatedBackground';
-import Link from 'next/link';
 
 const stats = [
   { number: '150+', label: 'Завершенных проектов' },

@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import HeroBackground from './HeroBackground';
-import Link from 'next/link';
+import AnimatedBackground from './AnimatedBackground';
+import SectionWrapper from './SectionWrapper';
 
 const features = [
   { number: '01', title: 'Веб-разработка', description: 'Современные технологии' },
@@ -14,7 +14,7 @@ const features = [
 export default function HeroSection() {
   return (
     <div className="min-h-screen flex items-center relative overflow-hidden py-20 md:py-0">
-      <HeroBackground />
+      <AnimatedBackground />
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div 

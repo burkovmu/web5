@@ -1,9 +1,9 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useState, useRef } from 'react';
-import SectionWrapper from './SectionWrapper';
-import AnimatedBackground from './AnimatedBackground';
+import { motion } from "framer-motion";
+import { useState } from "react";
+import AnimatedBackground from "./AnimatedBackground";
+import SectionWrapper from "./SectionWrapper";
 
 const services = [
   {
