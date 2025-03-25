@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const menuItems = [
   { name: 'Главная', href: '#hero', number: '01' },
@@ -25,7 +25,14 @@ export default function Navigation() {
 
   const handleLinkClick = (href: string) => {
     setIsOpen(false);
-    router.push(href);
+    if (href.startsWith('#')) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      router.push(href);
+    }
   };
 
   return (
