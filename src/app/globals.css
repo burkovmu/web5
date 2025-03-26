@@ -55,14 +55,44 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Marvel';
+  src: url('./fonts/Marvel-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'a_Concepto';
+  src: url('./fonts/a_Concepto BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --font-bounded: 'Bounded', system-ui, sans-serif;
+    --foreground-rgb: 212, 212, 220;
+    --background-rgb: 29, 30, 34;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    scroll-behavior: smooth;
   }
   
   body {
     @apply bg-[#0a0a0d] text-white;
     font-family: var(--font-bounded);
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
   }
   
   html {
@@ -469,4 +499,17 @@
   .shooting-star {
     filter: blur(1px);
   }
+}
+
+.font-marvel {
+  font-family: 'Marvel', sans-serif;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 0.7s infinite;
 }

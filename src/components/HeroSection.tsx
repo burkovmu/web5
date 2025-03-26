@@ -1,179 +1,201 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
 import AnimatedBackground from './AnimatedBackground';
 import SectionWrapper from './SectionWrapper';
 
-const features = [
-  { number: '01', title: 'Веб-разработка', description: 'Современные технологии' },
-  { number: '02', title: 'UI/UX Дизайн', description: 'Уникальные решения' },
-  { number: '03', title: 'Оптимизация', description: 'Высокая производительность' },
-  { number: '04', title: 'Поддержка', description: 'Постоянное развитие' }
+// Варианты слов, которые будут меняться в заголовке
+const headingVariants = ['сайты', 'интернет-магазины', 'лендинги', 'мобильные приложения', 'веб-приложения'];
+
+// Предопределенные значения для анимированных точек
+const staticDots = [
+  { x: 20, y: 80, opacity: 0.5, duration: 15 },
+  { x: 40, y: 30, opacity: 0.4, duration: 18 },
+  { x: 60, y: 70, opacity: 0.6, duration: 20 },
+  { x: 80, y: 40, opacity: 0.7, duration: 22 },
+  { x: 30, y: 10, opacity: 0.5, duration: 25 },
+  { x: 70, y: 90, opacity: 0.6, duration: 19 },
+  { x: 90, y: 50, opacity: 0.7, duration: 17 },
+  { x: 50, y: 20, opacity: 0.3, duration: 21 },
+  { x: 45, y: 85, opacity: 0.4, duration: 24 },
+  { x: 35, y: 60, opacity: 0.5, duration: 16 }
 ];
 
 export default function HeroSection() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [currentVariant, setCurrentVariant] = useState(0);
+  const [typeText, setTypeText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(80); // Начальная скорость печати (меньше = быстрее)
+  
+  const heroRef = useRef<HTMLDivElement>(null);
+  const typingRef = useRef<HTMLSpanElement>(null);
+  
+  // Эффект печатающегося текста (автоматический)
+  useEffect(() => {
+    const currentWord = headingVariants[currentVariant];
+    
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        setTypeText(currentWord.substring(0, typeText.length + 1));
+        
+        // Текст полностью напечатан
+        if (typeText.length === currentWord.length) {
+          // Пауза перед удалением
+          setTypingSpeed(700);
+          setIsDeleting(true);
+        } else {
+          // Скорость печати (быстрее чем было)
+          setTypingSpeed(30 + Math.random() * 40);
+        }
+      } else {
+        setTypeText(currentWord.substring(0, typeText.length - 1));
+        
+        // Текст полностью удален
+        if (typeText.length === 0) {
+          setIsDeleting(false);
+          setCurrentVariant((currentVariant + 1) % headingVariants.length);
+          // Короткая пауза перед печатью нового слова
+          setTypingSpeed(150);
+        } else {
+          // Удаление ещё быстрее (сверхскорость)
+          setTypingSpeed(5 + Math.random() * 10);
+        }
+      }
+    }, typingSpeed);
+    
+    return () => clearTimeout(timer);
+  }, [typeText, isDeleting, currentVariant]);
+  
+  // Обработка движений мыши для интерактивного эффекта
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (heroRef.current) {
+        const { left, top, width, height } = heroRef.current.getBoundingClientRect();
+        const x = (e.clientX - left) / width - 0.5;
+        const y = (e.clientY - top) / height - 0.5;
+        setMousePosition({ x, y });
+      }
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
-    <SectionWrapper className="relative w-full overflow-x-hidden min-h-screen flex items-center">
+    <SectionWrapper className="relative w-full overflow-hidden min-h-screen">
       <AnimatedBackground variant="hero" />
-      <div className="w-full md:w-[90%] mx-auto px-4 md:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <div className="relative md:pl-8">
-              <div className="absolute -left-4 top-0 w-[2px] h-full bg-[#feda6a]/10" />
-              
-              <div className="space-y-8">
-                <motion.span 
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-light"
-                >
-                  Веб-студия
-                </motion.span>
+      
+      {/* Сетка с анимированными точками */}
+      <div className="absolute inset-0 z-0">
+        {staticDots.map((dot, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 rounded-full bg-[#d4d4dc]/30"
+            initial={{ 
+              x: `${dot.x}%`, 
+              y: `${dot.y}%`, 
+              opacity: dot.opacity
+            }}
+            animate={{ 
+              x: `${(dot.x + 20) % 100}%`, 
+              y: `${(dot.y + 15) % 100}%`
+            }}
+            transition={{ 
+              duration: dot.duration, 
+              repeat: Infinity, 
+              repeatType: 'reverse'
+            }}
+          />
+        ))}
+      </div>
 
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.25 }}
-                  className="text-[#feda6a] text-4xl md:text-6xl font-['Marvel'] tracking-wider"
-                >
-                  MISHLEN
-                </motion.div>
+      {/* Название компании в шапке */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="absolute top-8 left-8 md:top-10 md:left-10 z-20"
+      >
+        <div
+          className="text-[#feda6a] text-4xl md:text-6xl tracking-wider"
+          style={{
+            fontFamily: "Marvel, sans-serif",
+            textShadow: '0 0 15px rgba(254, 218, 106, 0.3)'
+          }}
+        >
+          MISHLEN
+        </div>
+      </motion.div>
 
-                <motion.h1 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-5xl md:text-7xl font-light text-[#d4d4dc] leading-tight"
-                >
-                  Создаем сайты,<br />
-                  достойные<br />
-                  звезд
-                </motion.h1>
-
-                <motion.p 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="text-[#d4d4dc]/60 text-base md:text-lg max-w-md"
-                >
-                  Мы разрабатываем инновационные цифровые решения, которые превосходят ожидания
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 }}
-                  className="flex flex-col sm:flex-row gap-5"
-                >
-                  <button className="group relative px-12 py-5 bg-transparent text-[#feda6a] text-sm uppercase tracking-wider font-light overflow-hidden">
-                    <div className="absolute -left-4 top-0 w-[2px] h-full bg-[#feda6a]/20 group-hover:bg-[#feda6a]/40 transition-colors duration-300" />
-                    <div className="absolute inset-0 bg-[#feda6a]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <span className="relative z-10 inline-flex items-center">
-                      Смотреть кейсы
-                      <svg className="ml-3 w-4 h-4 transform group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </span>
-                  </button>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-
+      <div className="absolute inset-0 flex items-center justify-center" ref={heroRef}>
+        <div className="w-full max-w-5xl mx-auto text-center px-4">
+          {/* Основной заголовок с анимацией появления букв */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="relative"
+            style={{
+              transform: `perspective(1000px) rotateX(${mousePosition.y * 2}deg) rotateY(${mousePosition.x * 2}deg)`,
+            }}
           >
-            <div className="grid grid-cols-2 gap-6">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.number}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                  className="relative group"
-                >
-                  <div className="relative bg-[#393f4d]/10 p-8 overflow-hidden">
-                    <div className="absolute top-0 left-0 w-[2px] h-0 bg-[#feda6a]/20 group-hover:h-full transition-all duration-500" />
-                    <div className="absolute bottom-0 right-0 w-[2px] h-0 bg-[#feda6a]/20 group-hover:h-full transition-all duration-500" />
-                    
-                    <div className="relative z-10 space-y-4">
-                      <div className="text-[#feda6a]/20 text-4xl font-stolzl group-hover:text-[#feda6a]/30 transition-colors">
-                        {feature.number}
-                      </div>
-                      <div>
-                        <div className="text-[#d4d4dc] text-lg font-medium mb-1">
-                          {feature.title}
-                        </div>
-                        <div className="text-[#d4d4dc]/60 text-sm">
-                          {feature.description}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#feda6a]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2 }}
-              className="absolute -right-4 bottom-4 text-[20rem] font-stolzl text-[#393f4d]/10 leading-none select-none pointer-events-none"
+            <motion.h1 
+              initial={{ y: 50 }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.6, duration: 1, type: "spring", stiffness: 100 }}
+              className="whitespace-pre-line text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#d4d4dc] to-[#6a6a74] leading-tight mb-6"
             >
-              24
-            </motion.div>
+              Создаем <span className="relative text-[#feda6a]" ref={typingRef}>
+                {typeText}
+                <span className="absolute right-[-8px] h-full w-[4px] bg-[#feda6a] animate-blink"></span>
+              </span>,{'\n'}достойные звезд
+            </motion.h1>
+
+            <motion.div 
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ delay: 1.2, duration: 1.8, ease: "anticipate" }}
+              className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-[2px] bg-gradient-to-r from-transparent via-[#feda6a] to-transparent max-w-3xl mx-auto"
+            />
           </motion.div>
         </div>
-      </div>
-      
-      {/* Иконка скролла вниз */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
-        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10"
-      >
+          
+        {/* Нижняя прокрутка с анимацией */}
         <motion.div
-          animate={{ 
-            y: [0, 8, 0],
-            opacity: [0.5, 1, 0.5]
-          }}
-          transition={{ 
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="group cursor-pointer"
-          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.5, duration: 1 }}
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
         >
-          <div className="relative w-8 h-12 rounded-full border-2 border-[#feda6a]/30 p-1">
-            <motion.div
-              animate={{ 
-                y: [0, 12, 0],
-                opacity: [0.5, 1, 0.5]
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="w-2 h-2 bg-[#feda6a] rounded-full mx-auto"
-            />
-            <div className="absolute inset-0 border-2 border-[#feda6a]/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="flex flex-col items-center cursor-pointer"
+            onClick={() => window.scrollTo({
+              top: window.innerHeight,
+              behavior: 'smooth'
+            })}
+          >
+            <span className="text-[#d4d4dc]/70 text-sm mb-2">Прокрутите вниз</span>
+            <motion.svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-[#feda6a]"
+            >
+              <polyline points="7 13 12 18 17 13"></polyline>
+              <polyline points="7 6 12 11 17 6"></polyline>
+            </motion.svg>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </SectionWrapper>
   );
 } 
