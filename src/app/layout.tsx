@@ -4,7 +4,7 @@ import './globals.css';
 import Navigation from '@/components/Navigation';
 
 const bounded = localFont({
-  src: './fonts/Bounded-ExtraLight.ttf',
+  src: '../app/fonts/Bounded-ExtraLight.ttf',
   variable: '--font-bounded'
 });
 

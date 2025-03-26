@@ -127,9 +127,9 @@ const ContactSection = () => {
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 }}
+              transition={{ delay: 0.5 }}
                   className="bg-[#393f4d]/10 p-8 rounded-[2px] backdrop-blur-sm border border-[#feda6a]/10 lg:col-span-2"
-                >
+            >
                   <h3 className="text-2xl font-bold text-[#feda6a] mb-8">Оставьте заявку</h3>
                   <form className="space-y-8">
               {/* Основная информация */}

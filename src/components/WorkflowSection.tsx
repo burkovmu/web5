@@ -86,15 +86,15 @@ export default function WorkflowSection() {
                     <span className="text-[#feda6a] text-2xl font-bold">
                       {step.number}
                     </span>
-                  </div>
+                </div>
                   
                   <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#feda6a] transition-colors duration-300">
-                    {step.title}
-                  </h3>
+                  {step.title}
+                </h3>
                   
                   <p className="text-[#d4d4dc] leading-relaxed">
-                    {step.description}
-                  </p>
+                  {step.description}
+                </p>
                 </div>
               </div>
             </motion.div>

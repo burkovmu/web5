@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: 'Bounded';
-  src: url('./fonts/Bounded-ExtraLight.ttf') format('truetype');
+  src: url('/fonts/Bounded-ExtraLight.ttf') format('truetype');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: 'Pixy';
-  src: url('./fonts/ofont.ru_Pixy.ttf') format('truetype');
+  src: url('/fonts/ofont.ru_Pixy.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -22,7 +22,7 @@
 @font-face {
   font-family: 'Etude Noire';
   src: local('Etude Noire Light'),
-       url('./fonts/ofont.ru_Etude Noire Light.ttf') format('truetype');
+       url('/fonts/ofont.ru_Etude Noire Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -31,7 +31,7 @@
 @font-face {
   font-family: 'Etude Noire';
   src: local('Etude Noire Regular'),
-       url('./fonts/ofont.ru_Etude Noire Regular.ttf') format('truetype');
+       url('/fonts/ofont.ru_Etude Noire Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -40,7 +40,7 @@
 @font-face {
   font-family: 'Etude Noire';
   src: local('Etude Noire Bold'),
-       url('./fonts/ofont.ru_Etude Noire Bold.ttf') format('truetype');
+       url('/fonts/ofont.ru_Etude Noire Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -48,8 +48,8 @@
 
 @font-face {
   font-family: 'MullerNarrow';
-  src: url('./fonts/mullernarrow-ultralight.woff2') format('woff2'),
-       url('./fonts/mullernarrow-ultralight.woff') format('woff');
+  src: url('/fonts/mullernarrow-ultralight.woff2') format('woff2'),
+       url('/fonts/mullernarrow-ultralight.woff') format('woff');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -57,7 +57,7 @@
 
 @font-face {
   font-family: 'Marvel';
-  src: url('./fonts/Marvel-Regular.ttf') format('truetype');
+  src: url('/fonts/Marvel-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -65,7 +65,7 @@
 
 @font-face {
   font-family: 'a_Concepto';
-  src: url('./fonts/a_Concepto BoldItalic.ttf') format('truetype');
+  src: url('/fonts/a_Concepto BoldItalic.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
