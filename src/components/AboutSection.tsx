@@ -23,30 +23,18 @@ export default function AboutSection() {
     <SectionWrapper className="relative w-full overflow-x-hidden">
       <AnimatedBackground variant="about" />
       <div className="w-full md:w-[90%] mx-auto px-4 md:px-8 relative z-10">
-        <h2 className="text-4xl font-bold mb-8">О нас</h2>
         <div className="flex flex-col items-start mb-20">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-light mb-6"
-          >
+          <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-6">
             О нас
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-7xl font-light text-[#d4d4dc] mb-6"
-          >
-            Кто мы такие
-          </motion.h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="w-[120px] h-[1px] bg-[#feda6a]"
-          />
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+            Создаем инновационные решения для вашего бизнеса
+          </h2>
+          <p className="text-[#d4d4dc] text-lg md:text-xl max-w-3xl">
+            Наша команда специализируется на разработке веб-приложений, 
+            мобильных приложений и блокчейн-решений. Мы помогаем бизнесу 
+            расти и развиваться в цифровую эпоху.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
@@ -150,7 +138,7 @@ export default function AboutSection() {
                     transition={{ delay: 1.5 }}
                     className="text-3xl text-[#d4d4dc] font-stolzl leading-tight mb-3"
                   >
-                    Готовы обсудить ваш проект?
+                    Давайте создадим что-то особенное вместе
                   </motion.h3>
                   
                   <motion.p
@@ -159,7 +147,7 @@ export default function AboutSection() {
                     transition={{ delay: 1.6 }}
                     className="text-[#d4d4dc]/60 text-base max-w-xl"
                   >
-                    Оставьте заявку, и мы свяжемся с вами в течение 24 часов
+                    Расскажите о вашем проекте, и мы поможем воплотить его в жизнь
                   </motion.p>
                 </div>
               </div>

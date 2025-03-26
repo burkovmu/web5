@@ -13,7 +13,7 @@ const features = [
 
 export default function HeroSection() {
   return (
-    <SectionWrapper className="relative w-full overflow-x-hidden">
+    <SectionWrapper className="relative w-full overflow-x-hidden min-h-screen flex items-center">
       <AnimatedBackground variant="hero" />
       <div className="w-full md:w-[90%] mx-auto px-4 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -127,6 +127,44 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </div>
+      
+      {/* Иконка скролла вниз */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.5 }}
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10"
+      >
+        <motion.div
+          animate={{ 
+            y: [0, 8, 0],
+            opacity: [0.5, 1, 0.5]
+          }}
+          transition={{ 
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="group cursor-pointer"
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+        >
+          <div className="relative w-8 h-12 rounded-full border-2 border-[#feda6a]/30 p-1">
+            <motion.div
+              animate={{ 
+                y: [0, 12, 0],
+                opacity: [0.5, 1, 0.5]
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="w-2 h-2 bg-[#feda6a] rounded-full mx-auto"
+            />
+            <div className="absolute inset-0 border-2 border-[#feda6a]/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
+        </motion.div>
+      </motion.div>
     </SectionWrapper>
   );
 } 
