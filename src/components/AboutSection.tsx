@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import AnimatedBackground from './AnimatedBackground';
+import SectionWrapper from './SectionWrapper';
 
 const stats = [
   { number: '150+', label: 'Завершенных проектов' },
@@ -19,9 +20,9 @@ const achievements = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative min-h-screen py-20 w-full overflow-x-hidden">
+    <SectionWrapper className="relative w-full overflow-x-hidden">
       <AnimatedBackground variant="about" />
-      <div className="w-[80%] mx-auto px-4 md:px-8 relative z-10">
+      <div className="w-full md:w-[90%] mx-auto px-4 md:px-8 relative z-10">
         <h2 className="text-4xl font-bold mb-8">О нас</h2>
         <div className="flex flex-col items-start mb-20">
           <motion.span 
@@ -199,6 +200,6 @@ export default function AboutSection() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 } 

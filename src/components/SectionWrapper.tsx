@@ -14,7 +14,7 @@ export default function SectionWrapper({ children, className = "" }: SectionWrap
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className={`relative ${className}`}
+      className={`relative py-20 md:py-32 ${className}`}
     >
       {children}
     </motion.section>

@@ -32,7 +32,7 @@ export default function WorkflowSection() {
   return (
     <SectionWrapper className="relative w-full overflow-x-hidden">
       <AnimatedBackground variant="workflow" />
-      <div className="w-[80%] mx-auto px-4 md:px-8 relative z-10">
+      <div className="w-full md:w-[90%] mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col items-start mb-20">
           <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-6">
             Процесс

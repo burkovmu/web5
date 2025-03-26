@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import SectionWrapper from './SectionWrapper';
 import AnimatedBackground from './AnimatedBackground';
+import { useState } from 'react';
 
 const budgets = [
   '50 000 – 200 000 ₽',
@@ -28,10 +29,22 @@ const socialLinks = [
 ];
 
 export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    budget: "",
+    description: "",
+  });
+  const [budget, setBudget] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
   return (
     <SectionWrapper className="relative w-full overflow-x-hidden">
       <AnimatedBackground variant="contact" />
-      <div className="w-[80%] mx-auto px-4 md:px-8 relative z-10">
+      <div className="w-full md:w-[90%] mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col items-start mb-20">
           <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-6">
             Связаться
@@ -140,19 +153,24 @@ export default function ContactSection() {
               {/* Бюджет */}
               <div className="space-y-3">
                 <label className="block text-[#feda6a] text-sm uppercase tracking-wider">Планируемый бюджет</label>
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                  {budgets.map((budget) => (
+                <div className="grid grid-cols-2 gap-3">
+                  {budgets.map((option) => (
                     <label 
-                      key={budget}
+                      key={option}
                       className="relative group cursor-pointer"
                     >
                       <input 
                         type="radio" 
                         className="peer hidden" 
                         name="budget"
+                        checked={budget === option}
+                        onChange={() => {
+                          setBudget(option);
+                          setFormData(prev => ({ ...prev, budget: option }));
+                        }}
                       />
-                      <div className="px-4 py-3 text-center border border-[#393f4d] text-[#d4d4dc] peer-checked:border-[#feda6a] peer-checked:text-[#feda6a] hover:border-[#feda6a] transition-colors whitespace-nowrap">
-                        {budget}
+                      <div className="p-3 text-center border border-[#393f4d] text-[#d4d4dc] peer-checked:border-[#feda6a] peer-checked:text-[#feda6a] hover:border-[#feda6a] transition-colors">
+                        {option}
                       </div>
                     </label>
                   ))}
