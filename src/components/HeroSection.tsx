@@ -13,9 +13,9 @@ const features = [
 
 export default function HeroSection() {
   return (
-    <div className="min-h-screen flex items-center relative overflow-hidden py-20 md:py-0">
+    <div className="min-h-screen flex items-center relative overflow-hidden py-20 md:py-0 w-full">
       <AnimatedBackground />
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="w-[80%] mx-auto px-4 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div 
             initial={{ opacity: 0 }}

@@ -29,9 +29,9 @@ const socialLinks = [
 
 export default function ContactSection() {
   return (
-    <SectionWrapper className="relative">
+    <SectionWrapper className="relative w-full overflow-x-hidden">
       <AnimatedBackground variant="contact" />
-      <div className="w-[95%] mx-auto relative z-10">
+      <div className="w-[80%] mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col items-start mb-20">
           <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-6">
             Связаться
@@ -42,7 +42,7 @@ export default function ContactSection() {
           <div className="w-[120px] h-[1px] bg-[#feda6a]" />
         </div>
         
-        <div className="flex flex-col lg:flex-row min-h-screen -mx-4">
+        <div className="flex flex-col lg:flex-row min-h-screen">
           {/* Левая часть с заголовком */}
           <div className="lg:w-1/3 bg-[#feda6a] p-8 lg:p-16 flex items-center">
             <motion.div
@@ -88,7 +88,7 @@ export default function ContactSection() {
           </div>
 
           {/* Правая часть с формой */}
-          <div className="lg:w-2/3 p-8 lg:p-16 lg:pl-24 overflow-y-auto">
+          <div className="lg:w-2/3 p-8 lg:p-16 lg:pl-24">
             <motion.form 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
