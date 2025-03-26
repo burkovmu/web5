@@ -36,6 +36,15 @@ export default function HeroSection() {
                   Веб-студия
                 </motion.span>
 
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.25 }}
+                  className="text-[#feda6a] text-4xl md:text-6xl font-['Marvel'] tracking-wider"
+                >
+                  MISHLEN
+                </motion.div>
+
                 <motion.h1 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
