@@ -47,17 +47,19 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <SectionWrapper className="relative py-48">
+    <SectionWrapper className="relative w-full overflow-x-hidden">
       <AnimatedBackground variant="projects" />
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="w-full md:w-[90%] mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col items-start mb-20">
           <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-6">
             Наши проекты
           </span>
-          <h2 className="text-7xl font-stolzl text-[#d4d4dc] mb-6">
-            Последние работы
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+            Реализованные проекты
           </h2>
-          <div className="w-[120px] h-[1px] bg-[#feda6a]" />
+          <p className="text-[#d4d4dc] text-lg md:text-xl max-w-3xl">
+            Посмотрите на наши последние работы и убедитесь в качестве наших услуг
+          </p>
         </div>
 
         <div className="grid grid-cols-1 gap-32">
