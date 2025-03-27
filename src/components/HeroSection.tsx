@@ -105,7 +105,7 @@ export default function HeroSection() {
       {/* Сетка с анимированными точками */}
       <div className="absolute inset-0 z-0">
         {staticDots.map((dot, i) => (
-          <motion.div
+          <motion.div 
             key={i}
             className="absolute w-1 h-1 rounded-full bg-[#d4d4dc]/30"
             initial={{ 
@@ -127,22 +127,21 @@ export default function HeroSection() {
       </div>
 
       {/* Название компании в шапке */}
-      <motion.div
+                <motion.div 
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="absolute top-8 left-8 md:top-10 md:left-10 z-20"
       >
         <div
-          className="text-[#feda6a] text-4xl md:text-6xl tracking-wider"
+          className="text-[#feda6a] text-4xl md:text-6xl tracking-wider font-marvel"
           style={{
-            fontFamily: "Marvel, sans-serif",
             textShadow: '0 0 15px rgba(254, 218, 106, 0.3)'
           }}
         >
           MISHLEN
-        </div>
-      </motion.div>
+            </div>
+          </motion.div>
 
       <div className="absolute inset-0 flex items-center justify-center" ref={heroRef}>
         <div className="w-full max-w-5xl mx-auto text-center px-4">
@@ -173,13 +172,13 @@ export default function HeroSection() {
               transition={{ delay: 1.2, duration: 1.8, ease: "anticipate" }}
               className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-[2px] bg-gradient-to-r from-transparent via-[#feda6a] to-transparent max-w-3xl mx-auto"
             />
-          </motion.div>
-        </div>
-          
+                </motion.div>
+            </div>
+
         {/* Нижняя прокрутка с анимацией */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
           transition={{ delay: 2.5, duration: 1 }}
           className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
         >

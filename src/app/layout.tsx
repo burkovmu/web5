@@ -1,16 +1,32 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 
-const bounded = localFont({
-  src: '../app/fonts/Bounded-ExtraLight.ttf',
-  variable: '--font-bounded'
+const inter = Inter({ subsets: ['latin'] });
+
+const marvel = localFont({
+  src: [
+    {
+      path: '../app/fonts/Marvel-Regular.ttf',
+      weight: 'normal',
+      style: 'normal',
+    }
+  ],
+  variable: '--font-marvel'
+});
+
+const tryClother = localFont({
+  src: '../app/fonts/try_clother_light.ttf',
+  variable: '--font-tryclother',
+  preload: true,
+  display: 'swap'
 });
 
 export const metadata: Metadata = {
-  title: 'Web3 Development',
-  description: 'Professional Web3 Development Services',
+  title: 'Mishlen - Создаем достойные звезд',
+  description: 'Создаем сайты, интернет-магазины, лендинги, мобильные и веб-приложения',
 };
 
 export default function RootLayout({
@@ -19,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${bounded.variable} font-bounded`}>
+    <html lang="ru">
+      <body className={`${tryClother.variable} ${marvel.variable} font-tryclother`}>
         <Navigation />
         {children}
       </body>
