@@ -55,30 +55,13 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Marvel';
-  src: url('/fonts/Marvel-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'a_Concepto';
-  src: url('/fonts/a_Concepto BoldItalic.ttf') format('truetype');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
 @layer base {
   :root {
     --font-bounded: var(--font-bounded);
-    --font-marvel: var(--font-marvel);
     --font-evolventa: var(--font-bounded);
     --font-tryclother: var(--font-bounded);
-    --font-beermoney: var(--font-marvel);
-    --font-rostov: var(--font-marvel);
+    --font-beermoney: var(--font-bounded);
+    --font-rostov: var(--font-bounded);
     --foreground-rgb: 212, 212, 220;
     --background-rgb: 29, 30, 34;
   }
@@ -512,19 +495,15 @@
 }
 
 @layer utilities {
-  .font-marvel {
-    font-family: 'Marvel', sans-serif;
-  }
-  
   .font-tryclother {
     font-family: 'Bounded', sans-serif;
   }
 
   .font-beermoney {
-    font-family: 'Marvel', sans-serif;
+    font-family: 'Bounded', sans-serif;
   }
 
   .font-rostov {
-    font-family: 'Marvel', sans-serif;
+    font-family: 'Bounded', sans-serif;
   }
 }
