@@ -25,11 +25,17 @@ export default function Navigation() {
 
   const handleLinkClick = (href: string) => {
     setIsOpen(false);
+    
     if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      setTimeout(() => {
+        const element = document.getElementById(href.substring(1));
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 300);
     } else {
       router.push(href);
     }
@@ -96,7 +102,10 @@ export default function Navigation() {
                     >
                       <Link
                         href={item.href}
-                        onClick={() => handleLinkClick(item.href)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleLinkClick(item.href);
+                        }}
                         className="flex items-baseline gap-4 py-2"
                       >
                         <span className="text-[#feda6a] font-light text-lg opacity-60 group-hover:opacity-100 transition-opacity duration-300">

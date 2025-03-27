@@ -13,12 +13,24 @@ export default function Home() {
     <main className="relative min-h-screen">
       {/* Основной контент */}
       <div className="relative content-wrapper">
-        <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <ProjectsSection />
-        <WorkflowSection />
-        <ContactSection />
+        <div id="hero">
+          <HeroSection />
+        </div>
+        <div id="about">
+          <AboutSection />
+        </div>
+        <div id="services">
+          <ServicesSection />
+        </div>
+        <div id="cases">
+          <ProjectsSection />
+        </div>
+        <div id="workflow">
+          <WorkflowSection />
+        </div>
+        <div id="contact">
+          <ContactSection />
+        </div>
         <Footer />
       </div>
     </main>
