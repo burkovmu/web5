@@ -108,46 +108,45 @@ export default function AboutSection() {
           transition={{ delay: 1.2 }}
           className="relative"
         >
-          <div className="relative bg-black/80 backdrop-blur-md border border-[#393f4d]/20 group">
+          <div className="relative backdrop-blur-sm border border-[#feda6a]/10 rounded-lg group">
             {/* Декоративный фон */}
-            <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-[#feda6a]/5 mix-blend-overlay" />
-              <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-[#feda6a]/5 to-transparent" />
-              <div className="absolute left-0 top-0 w-32 h-32 bg-[#feda6a]/10 rounded-full blur-3xl" />
+            <div className="absolute inset-0 rounded-lg overflow-hidden">
+              <div className="absolute left-0 top-0 w-48 h-48 bg-[#feda6a]/5 rounded-full blur-3xl opacity-30" />
+              <div className="absolute right-0 bottom-0 w-32 h-32 bg-[#feda6a]/5 rounded-full blur-2xl opacity-30" />
             </div>
 
             {/* Основной контент */}
-            <div className="relative grid grid-cols-12 items-center p-10">
+            <div className="relative grid grid-cols-12 items-center p-12">
               {/* Левая часть */}
               <div className="col-span-8 flex items-center">
                 <div className="flex-1 pr-16 border-r border-[#feda6a]/10">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-8 h-8 rounded-full bg-[#feda6a]/10 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-[#feda6a]" viewBox="0 0 24 24" fill="none">
+                    <div className="w-10 h-10 rounded-full bg-[#feda6a]/10 flex items-center justify-center group-hover:bg-[#feda6a]/20 transition-colors duration-500">
+                      <svg className="w-5 h-5 text-[#feda6a]" viewBox="0 0 24 24" fill="none">
                         <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M12 16L16 12L12 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M8 12H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M8 12L12 16L16 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M12 8V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-[#feda6a] text-sm uppercase tracking-wider">Начать сотрудничество</span>
+                    <span className="text-[#feda6a] text-sm uppercase tracking-[0.2em] font-medium">Ваш следующий проект</span>
                   </div>
 
                   <motion.h3
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.5 }}
-                    className="text-3xl text-[#d4d4dc] font-stolzl leading-tight mb-3"
+                    className="text-4xl text-[#d4d4dc] font-stolzl leading-tight mb-4"
                   >
-                    Давайте создадим что-то особенное вместе
+                    Воплотим ваши идеи в реальность
                   </motion.h3>
                   
                   <motion.p
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 1.6 }}
-                    className="text-[#d4d4dc]/60 text-base max-w-xl"
+                    className="text-[#d4d4dc]/70 text-lg max-w-xl leading-relaxed"
                   >
-                    Расскажите о вашем проекте, и мы поможем воплотить его в жизнь
+                    От концепции до запуска — мы создаем инновационные цифровые решения, которые превосходят ожидания
                   </motion.p>
                 </div>
               </div>
@@ -160,14 +159,11 @@ export default function AboutSection() {
                   transition={{ delay: 1.7 }}
                   className="relative"
                 >
-                  <button className="group/button relative inline-flex items-center gap-3 px-8 py-4 bg-[#feda6a] text-[#111113] font-medium overflow-hidden">
-                    {/* Анимированный фон */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover/button:translate-x-[200%] transition-transform duration-1000" />
-                    
+                  <button className="group/button relative inline-flex items-center gap-4 px-10 py-5 bg-[#feda6a] text-[#111113] font-medium rounded-lg overflow-hidden">
                     {/* Текст и иконка */}
-                    <span className="relative z-10 text-base whitespace-nowrap">Оставить заявку</span>
+                    <span className="relative z-10 text-base font-medium whitespace-nowrap">Начать проект</span>
                     <svg 
-                      className="w-4 h-4 relative z-10 transform group-hover/button:translate-x-1 transition-transform" 
+                      className="w-5 h-5 relative z-10 transform group-hover/button:translate-x-1 transition-transform duration-300" 
                       viewBox="0 0 24 24" 
                       fill="none" 
                     >
@@ -175,16 +171,12 @@ export default function AboutSection() {
                     </svg>
 
                     {/* Декоративные углы */}
-                    <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-[#111113]/30" />
-                    <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-[#111113]/30" />
+                    <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#111113]/20 rounded-tr-lg" />
+                    <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#111113]/20 rounded-bl-lg" />
                   </button>
                 </motion.div>
               </div>
             </div>
-
-            {/* Декоративные элементы */}
-            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#feda6a]/5 via-[#feda6a]/20 to-[#feda6a]/5" />
-            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#feda6a]/5 via-[#feda6a]/20 to-[#feda6a]/5" />
           </div>
         </motion.div>
       </div>
