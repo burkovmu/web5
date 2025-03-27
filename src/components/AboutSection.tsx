@@ -19,6 +19,17 @@ const achievements = [
 ];
 
 export default function AboutSection() {
+  // Функция для плавной прокрутки к разделу контактов
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <SectionWrapper className="relative w-full overflow-x-hidden">
       <AnimatedBackground variant="about" />
@@ -159,11 +170,14 @@ export default function AboutSection() {
                   transition={{ delay: 1.7 }}
                   className="relative w-full md:w-auto"
                 >
-                  <button className="group/button relative inline-flex items-center justify-center gap-4 px-8 md:px-10 py-4 md:py-5 bg-[#feda6a] text-[#111113] font-medium rounded-lg overflow-hidden w-full md:w-auto">
+                  <button 
+                    className="group/button relative inline-flex items-center justify-center gap-4 px-8 md:px-10 py-4 md:py-5 bg-[#feda6a] text-[#111113] font-medium rounded-lg overflow-hidden w-full md:w-auto"
+                    onClick={scrollToContact}
+                  >
                     {/* Текст и иконка */}
                     <span className="relative z-10 text-base font-medium whitespace-nowrap">Начать проект</span>
                     <svg 
-                      className="w-5 h-5 relative z-10 transform group-hover/button:translate-x-1 transition-transform duration-300" 
+                      className="w-5 h-5 relative z-10 transform group-hover/button:translate-x-1 transition-transform duration-300"
                       viewBox="0 0 24 24" 
                       fill="none" 
                     >
