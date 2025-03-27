@@ -71,28 +71,14 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Evolventa';
-  src: url('/fonts/ofont.ru_Evolventa.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Try Clother';
-  src: url('/fonts/try_clother_light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
 @layer base {
   :root {
     --font-bounded: var(--font-bounded);
     --font-marvel: var(--font-marvel);
-    --font-evolventa: var(--font-evolventa);
-    --font-tryclother: var(--font-tryclother);
+    --font-evolventa: var(--font-bounded);
+    --font-tryclother: var(--font-bounded);
+    --font-beermoney: var(--font-marvel);
+    --font-rostov: var(--font-marvel);
     --foreground-rgb: 212, 212, 220;
     --background-rgb: 29, 30, 34;
   }
@@ -101,7 +87,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(--font-tryclother);
+    font-family: 'Bounded', sans-serif;
   }
   
   html, body {
@@ -110,17 +96,17 @@
   
   body {
     @apply bg-[#0a0a0d] text-white;
-    font-family: var(--font-tryclother);
+    font-family: 'Bounded', sans-serif;
     color: rgb(var(--foreground-rgb));
     background: rgb(var(--background-rgb));
   }
   
   html {
-    font-family: var(--font-tryclother);
+    font-family: 'Bounded', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6, p, span, div, a {
-    font-family: var(--font-tryclother);
+    font-family: 'Bounded', sans-serif;
   }
 
   .font-pixy {
@@ -527,10 +513,18 @@
 
 @layer utilities {
   .font-marvel {
-    font-family: var(--font-marvel);
+    font-family: 'Marvel', sans-serif;
   }
   
   .font-tryclother {
-    font-family: var(--font-tryclother);
+    font-family: 'Bounded', sans-serif;
+  }
+
+  .font-beermoney {
+    font-family: 'Marvel', sans-serif;
+  }
+
+  .font-rostov {
+    font-family: 'Marvel', sans-serif;
   }
 }
