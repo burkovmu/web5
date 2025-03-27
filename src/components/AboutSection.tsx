@@ -116,10 +116,10 @@ export default function AboutSection() {
             </div>
 
             {/* Основной контент */}
-            <div className="relative grid grid-cols-12 items-center p-12">
+            <div className="relative grid grid-cols-1 md:grid-cols-12 items-center gap-8 md:gap-0 p-6 md:p-12">
               {/* Левая часть */}
-              <div className="col-span-8 flex items-center">
-                <div className="flex-1 pr-16 border-r border-[#feda6a]/10">
+              <div className="col-span-1 md:col-span-8 flex items-center">
+                <div className="flex-1 md:pr-16 md:border-r border-[#feda6a]/10">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-10 h-10 rounded-full bg-[#feda6a]/10 flex items-center justify-center group-hover:bg-[#feda6a]/20 transition-colors duration-500">
                       <svg className="w-5 h-5 text-[#feda6a]" viewBox="0 0 24 24" fill="none">
@@ -135,7 +135,7 @@ export default function AboutSection() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.5 }}
-                    className="text-4xl text-[#d4d4dc] font-stolzl leading-tight mb-4"
+                    className="text-3xl md:text-4xl text-[#d4d4dc] font-stolzl leading-tight mb-4"
                   >
                     Воплотим ваши идеи в реальность
                   </motion.h3>
@@ -144,7 +144,7 @@ export default function AboutSection() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 1.6 }}
-                    className="text-[#d4d4dc]/70 text-lg max-w-xl leading-relaxed"
+                    className="text-base md:text-lg text-[#d4d4dc]/70 max-w-xl leading-relaxed mb-8 md:mb-0"
                   >
                     От концепции до запуска — мы создаем инновационные цифровые решения, которые превосходят ожидания
                   </motion.p>
@@ -152,14 +152,14 @@ export default function AboutSection() {
               </div>
 
               {/* Правая часть */}
-              <div className="col-span-4 flex items-center justify-end pl-16">
+              <div className="col-span-1 md:col-span-4 flex items-center justify-center md:justify-end md:pl-16">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.7 }}
-                  className="relative"
+                  className="relative w-full md:w-auto"
                 >
-                  <button className="group/button relative inline-flex items-center gap-4 px-10 py-5 bg-[#feda6a] text-[#111113] font-medium rounded-lg overflow-hidden">
+                  <button className="group/button relative inline-flex items-center justify-center gap-4 px-8 md:px-10 py-4 md:py-5 bg-[#feda6a] text-[#111113] font-medium rounded-lg overflow-hidden w-full md:w-auto">
                     {/* Текст и иконка */}
                     <span className="relative z-10 text-base font-medium whitespace-nowrap">Начать проект</span>
                     <svg 
