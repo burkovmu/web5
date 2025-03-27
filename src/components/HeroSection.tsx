@@ -28,9 +28,24 @@ export default function HeroSection() {
   const [typeText, setTypeText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(80); // Начальная скорость печати (меньше = быстрее)
+  const [isMobile, setIsMobile] = useState(false);
   
   const heroRef = useRef<HTMLDivElement>(null);
   const typingRef = useRef<HTMLSpanElement>(null);
+  
+  // Определение типа устройства
+  useEffect(() => {
+    const checkIfMobile = () => {
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+      setIsMobile(isMobileDevice || window.innerWidth <= 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
   
   // Эффект печатающегося текста (автоматический)
   useEffect(() => {
@@ -43,11 +58,11 @@ export default function HeroSection() {
         // Текст полностью напечатан
         if (typeText.length === currentWord.length) {
           // Пауза перед удалением
-          setTypingSpeed(700);
+          setTypingSpeed(isMobile ? 1000 : 700);
           setIsDeleting(true);
         } else {
-          // Скорость печати (быстрее чем было)
-          setTypingSpeed(30 + Math.random() * 40);
+          // Скорость печати (замедляем для мобильных)
+          setTypingSpeed(isMobile ? 80 + Math.random() * 40 : 30 + Math.random() * 40);
         }
       } else {
         setTypeText(currentWord.substring(0, typeText.length - 1));
@@ -57,16 +72,16 @@ export default function HeroSection() {
           setIsDeleting(false);
           setCurrentVariant((currentVariant + 1) % headingVariants.length);
           // Короткая пауза перед печатью нового слова
-          setTypingSpeed(150);
+          setTypingSpeed(isMobile ? 300 : 150);
         } else {
-          // Удаление ещё быстрее (сверхскорость)
-          setTypingSpeed(5 + Math.random() * 10);
+          // Удаление (замедляем для мобильных)
+          setTypingSpeed(isMobile ? 30 + Math.random() * 20 : 5 + Math.random() * 10);
         }
       }
     }, typingSpeed);
     
     return () => clearTimeout(timer);
-  }, [typeText, isDeleting, currentVariant]);
+  }, [typeText, isDeleting, currentVariant, isMobile]);
   
   // Обработка движений мыши для интерактивного эффекта
   useEffect(() => {
