@@ -134,7 +134,7 @@ export default function HeroSection() {
         className="absolute top-8 left-8 md:top-10 md:left-10 z-20"
       >
         <div
-          className="text-[#feda6a] text-4xl md:text-6xl tracking-wider font-bounded"
+          className="text-[#feda6a] text-4xl md:text-6xl tracking-wider font-marvel"
           style={{
             textShadow: '0 0 15px rgba(254, 218, 106, 0.3)'
           }}

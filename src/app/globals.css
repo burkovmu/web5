@@ -55,13 +55,30 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Marvel';
+  src: url('/fonts/Marvel-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'a_Concepto';
+  src: url('/fonts/a_Concepto BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --font-bounded: var(--font-bounded);
-    --font-evolventa: var(--font-bounded);
-    --font-tryclother: var(--font-bounded);
-    --font-beermoney: var(--font-bounded);
-    --font-rostov: var(--font-bounded);
+    --font-marvel: var(--font-marvel);
+    --font-evolventa: var(--font-evolventa);
+    --font-tryclother: var(--font-tryclother);
+    --font-beermoney: var(--font-beermoney);
+    --font-rostov: var(--font-rostov);
     --foreground-rgb: 212, 212, 220;
     --background-rgb: 29, 30, 34;
   }
@@ -70,7 +87,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Bounded', sans-serif;
+    font-family: var(--font-tryclother);
   }
   
   html, body {
@@ -79,17 +96,17 @@
   
   body {
     @apply bg-[#0a0a0d] text-white;
-    font-family: 'Bounded', sans-serif;
+    font-family: var(--font-tryclother);
     color: rgb(var(--foreground-rgb));
     background: rgb(var(--background-rgb));
   }
   
   html {
-    font-family: 'Bounded', sans-serif;
+    font-family: var(--font-tryclother);
   }
 
   h1, h2, h3, h4, h5, h6, p, span, div, a {
-    font-family: 'Bounded', sans-serif;
+    font-family: var(--font-tryclother);
   }
 
   .font-pixy {
@@ -495,15 +512,19 @@
 }
 
 @layer utilities {
+  .font-marvel {
+    font-family: 'Marvel', sans-serif;
+  }
+  
   .font-tryclother {
-    font-family: 'Bounded', sans-serif;
+    font-family: var(--font-tryclother);
   }
 
   .font-beermoney {
-    font-family: 'Bounded', sans-serif;
+    font-family: var(--font-beermoney);
   }
 
   .font-rostov {
-    font-family: 'Bounded', sans-serif;
+    font-family: var(--font-rostov);
   }
 }
