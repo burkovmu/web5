@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
-import Navigation from '@/components/Navigation';
+import Header from '@/components/Header';
+import { LocaleProvider } from './context/LocaleContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -44,8 +45,10 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${tryClother.variable} ${marvel.variable} ${rostov.variable} font-tryclother`}>
-        <Navigation />
-        {children}
+        <LocaleProvider>
+          <Header />
+          {children}
+        </LocaleProvider>
       </body>
     </html>
   );
