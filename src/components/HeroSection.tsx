@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import AnimatedBackground from './AnimatedBackground';
 import SectionWrapper from './SectionWrapper';
-import { useLocale } from '@/context/LocaleContext';
+import { useLocale } from '../context/LocaleContext';
 
 // Предопределенные значения для анимированных точек
 const staticDots = [
