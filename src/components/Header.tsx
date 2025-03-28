@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { useLocale } from '@/context/LocaleContext';
+import { useLocale } from '../../context/LocaleContext';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
