@@ -4,9 +4,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import AnimatedBackground from './AnimatedBackground';
 import SectionWrapper from './SectionWrapper';
-
-// Варианты слов, которые будут меняться в заголовке
-const headingVariants = ['сайты', 'интернет-магазины', 'лендинги', 'мобильные приложения', 'веб-приложения'];
+import { useLocale } from '@/context/LocaleContext';
 
 // Предопределенные значения для анимированных точек
 const staticDots = [
@@ -23,6 +21,12 @@ const staticDots = [
 ];
 
 export default function HeroSection() {
+  const { translations } = useLocale();
+  const { heroSection } = translations;
+  
+  // Используем варианты слов из переводов
+  const headingVariants = heroSection.variants;
+  
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [currentVariant, setCurrentVariant] = useState(0);
   const [typeText, setTypeText] = useState('');
@@ -81,7 +85,7 @@ export default function HeroSection() {
     }, typingSpeed);
     
     return () => clearTimeout(timer);
-  }, [typeText, isDeleting, currentVariant, isMobile]);
+  }, [typeText, isDeleting, currentVariant, isMobile, headingVariants]);
   
   // Обработка движений мыши для интерактивного эффекта
   useEffect(() => {
@@ -126,23 +130,6 @@ export default function HeroSection() {
         ))}
       </div>
 
-      {/* Название компании в шапке */}
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute top-8 left-8 md:top-10 md:left-10 z-20"
-      >
-        <div
-          className="text-[#feda6a] text-4xl md:text-6xl tracking-wider font-marvel"
-          style={{
-            textShadow: '0 0 15px rgba(254, 218, 106, 0.3)'
-          }}
-        >
-          MISHLEN
-        </div>
-      </motion.div>
-
       <div className="absolute inset-0 flex items-center justify-center" ref={heroRef}>
         <div className="w-full max-w-5xl mx-auto text-center px-4">
           {/* Основной заголовок с анимацией появления букв */}
@@ -160,10 +147,10 @@ export default function HeroSection() {
               transition={{ delay: 0.6, duration: 1, type: "spring", stiffness: 100 }}
               className="whitespace-pre-line text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#d4d4dc] to-[#6a6a74] leading-tight mb-6"
             >
-              Создаем <span className="relative text-[#feda6a]" ref={typingRef}>
+              {heroSection.title1} <span className="relative text-[#feda6a]" ref={typingRef}>
                 {typeText}
                 <span className="absolute right-[-8px] h-full w-[4px] bg-[#feda6a] animate-blink"></span>
-              </span>,{'\n'}достойные звезд
+              </span>,{'\n'}{heroSection.title2}
             </motion.h1>
 
             <motion.div 
@@ -192,7 +179,7 @@ export default function HeroSection() {
             behavior: 'smooth'
           })}
         >
-          <span className="text-[#d4d4dc]/70 text-sm mb-2">Прокрутите вниз</span>
+          <span className="text-[#d4d4dc]/70 text-sm mb-2">{heroSection.scrollDown}</span>
           <motion.svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
