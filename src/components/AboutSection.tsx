@@ -3,22 +3,16 @@
 import { motion } from 'framer-motion';
 import AnimatedBackground from './AnimatedBackground';
 import SectionWrapper from './SectionWrapper';
-
-const stats = [
-  { number: '150+', label: 'Завершенных проектов' },
-  { number: '50+', label: 'Довольных клиентов' },
-  { number: '15', label: 'Наград и премий' },
-  { number: '24/7', label: 'Поддержка клиентов' }
-];
-
-const achievements = [
-  { year: '2020', title: 'Основание компании', description: 'Начало нашего пути в мире веб-разработки' },
-  { year: '2021', title: 'Первые достижения', description: 'Топ-10 веб-студий по версии Рейтинга Рунета' },
-  { year: '2022', title: 'Расширение команды', description: 'Открытие нового офиса и рост до 30 специалистов' },
-  { year: '2023', title: 'Международные проекты', description: 'Выход на международный рынок' }
-];
+import { useLocale } from '../app/context/LocaleContext';
 
 export default function AboutSection() {
+  const { translations } = useLocale();
+  const { aboutSection } = translations;
+
+  // Используем переводы из контекста
+  const stats = aboutSection.stats;
+  const achievements = aboutSection.achievements;
+
   // Функция для плавной прокрутки к разделу контактов
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
@@ -36,15 +30,13 @@ export default function AboutSection() {
       <div className="w-full md:w-[90%] mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col items-start mb-20">
           <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-6">
-            О нас
+            {aboutSection.title}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            Создаем инновационные решения для вашего бизнеса
+            {aboutSection.heading}
           </h2>
           <p className="text-[#d4d4dc] text-lg md:text-xl max-w-3xl">
-            Наша команда специализируется на разработке веб-приложений, 
-            мобильных приложений и блокчейн-решений. Мы помогаем бизнесу 
-            расти и развиваться в цифровую эпоху.
+            {aboutSection.description1}
           </p>
         </div>
 
@@ -59,10 +51,10 @@ export default function AboutSection() {
               <div className="absolute -left-4 top-0 w-[2px] h-full bg-[#feda6a]/20" />
               <div className="pl-8">
                 <p className="text-xl leading-relaxed text-[#d4d4dc] mb-6">
-                  Мы - команда профессионалов, объединенных страстью к созданию инновационных цифровых решений. Наш подход основан на глубоком понимании потребностей клиентов и использовании передовых технологий.
+                  {aboutSection.description2}
                 </p>
                 <p className="text-lg leading-relaxed text-[#d4d4dc]/80">
-                  С момента основания в 2020 году мы успешно реализовали более 150 проектов различной сложности, от корпоративных сайтов до масштабных веб-приложений.
+                  {aboutSection.description3}
                 </p>
               </div>
             </div>
@@ -139,7 +131,9 @@ export default function AboutSection() {
                         <path d="M12 8V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span className="text-[#feda6a] text-sm uppercase tracking-[0.2em] font-medium">Ваш следующий проект</span>
+                    <span className="text-[#feda6a] text-sm uppercase tracking-[0.2em] font-medium">
+                      {aboutSection.nextProject}
+                    </span>
                   </div>
 
                   <motion.h3
@@ -148,7 +142,7 @@ export default function AboutSection() {
                     transition={{ delay: 1.5 }}
                     className="text-3xl md:text-4xl text-[#d4d4dc] font-stolzl leading-tight mb-4"
                   >
-                    Воплотим ваши идеи в реальность
+                    {aboutSection.realizingIdeas}
                   </motion.h3>
                   
                   <motion.p
@@ -157,7 +151,7 @@ export default function AboutSection() {
                     transition={{ delay: 1.6 }}
                     className="text-base md:text-lg text-[#d4d4dc]/70 max-w-xl leading-relaxed mb-8 md:mb-0"
                   >
-                    От концепции до запуска — мы создаем инновационные цифровые решения, которые превосходят ожидания
+                    {aboutSection.fromConcept}
                   </motion.p>
                 </div>
               </div>
@@ -175,7 +169,9 @@ export default function AboutSection() {
                     onClick={scrollToContact}
                   >
                     {/* Текст и иконка */}
-                    <span className="relative z-10 text-base font-medium whitespace-nowrap">Начать проект</span>
+                    <span className="relative z-10 text-base font-medium whitespace-nowrap">
+                      {aboutSection.startProject}
+                    </span>
                     <svg 
                       className="w-5 h-5 relative z-10 transform group-hover/button:translate-x-1 transition-transform duration-300"
                       viewBox="0 0 24 24" 

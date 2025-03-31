@@ -234,28 +234,10 @@ export default function ProjectPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               className="prose prose-invert max-w-none mb-12"
             >
               <p className="text-xl whitespace-pre-line">{project.fullDescription}</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
-            >
-              {project.images.slice(1).map((image, index) => (
-                <div key={index} className="relative h-[300px] rounded-lg overflow-hidden">
-                  <Image
-                    src={image}
-                    alt={`${project.title} - деталь ${index + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ))}
             </motion.div>
 
             <motion.div
@@ -315,14 +297,55 @@ export default function ProjectPage() {
               className="space-y-8"
             >
               <div className="bg-white/5 p-6 rounded-lg">
-                <h2 className="text-2xl font-bold mb-6">Статистика проекта</h2>
-                <div className="grid grid-cols-2 gap-4">
-                  {Object.entries(project.stats).map(([key, value]) => (
-                    <div key={key} className="text-center">
-                      <div className="text-3xl font-bold text-[#feda6a]">{value}</div>
-                      <div className="text-sm text-gray-400 capitalize">{key}</div>
+                <h2 className="text-2xl font-bold mb-6">Детали проекта</h2>
+                <div className="space-y-5">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-white/10 rounded-md mt-1">
+                      <svg className="w-5 h-5 text-[#feda6a]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
                     </div>
-                  ))}
+                    <div>
+                      <div className="font-medium text-white">Срок выполнения</div>
+                      <div className="text-gray-400">3 месяца</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-white/10 rounded-md mt-1">
+                      <svg className="w-5 h-5 text-[#feda6a]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-medium text-white">Команда</div>
+                      <div className="text-gray-400">5 специалистов</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-white/10 rounded-md mt-1">
+                      <svg className="w-5 h-5 text-[#feda6a]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-medium text-white">Тип проекта</div>
+                      <div className="text-gray-400">Коммерческий</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-white/10 rounded-md mt-1">
+                      <svg className="w-5 h-5 text-[#feda6a]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-medium text-white">Статус</div>
+                      <div className="text-gray-400">Завершен</div>
+                    </div>
+                  </div>
                 </div>
               </div>
 

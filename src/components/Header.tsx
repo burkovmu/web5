@@ -4,11 +4,14 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useLocale } from '../app/context/LocaleContext';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { locale, changeLocale, translations } = useLocale();
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
 
   // Отслеживание скролла для изменения стиля шапки
   useEffect(() => {
@@ -31,14 +34,18 @@ export default function Header() {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-[#1d1e22]/80 backdrop-blur-md py-3' : 'bg-[#1d1e22]/40 backdrop-blur-sm py-5'
+        isScrolled 
+          ? 'bg-[#1d1e22]/80 backdrop-blur-md py-3' 
+          : isHomePage 
+            ? 'bg-transparent py-5' 
+            : 'bg-[#1d1e22]/40 backdrop-blur-sm py-5'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Логотип */}
         <Link href="/" className="z-20">
           <div
-            className="text-[#feda6a] text-3xl tracking-wider font-marvel"
+            className="text-[#feda6a] text-3xl tracking-wider font-marvel flex items-center pt-1"
             style={{
               textShadow: '0 0 15px rgba(254, 218, 106, 0.3)'
             }}
@@ -52,10 +59,24 @@ export default function Header() {
           {/* Переключатель языка */}
           <button 
             onClick={toggleLocale}
-            className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[#393f4d]/30 text-[#d4d4dc] hover:bg-[#393f4d]/50 transition-colors"
+            className="relative overflow-hidden group"
             aria-label={locale === 'ru' ? 'Переключить на английский' : 'Switch to Russian'}
           >
-            <span className="text-sm font-medium uppercase">{locale === 'ru' ? 'EN' : 'RU'}</span>
+            <div className="flex items-center bg-white/5 px-3 py-1 rounded-full border border-[#feda6a]/20 hover:border-[#feda6a]/50 transition-all">
+              <span className="text-sm font-medium uppercase text-[#d4d4dc] group-hover:text-[#feda6a] transition-colors">
+                {locale === 'ru' ? 'EN' : 'RU'}
+              </span>
+              <motion.div 
+                initial={false}
+                animate={{ rotate: locale === 'ru' ? 0 : 180 }}
+                transition={{ duration: 0.3 }}
+                className="ml-2"
+              >
+                <svg className="w-4 h-4 text-[#feda6a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </motion.div>
+            </div>
           </button>
 
           {/* Кнопка бургер-меню */}

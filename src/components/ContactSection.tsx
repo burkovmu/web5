@@ -3,24 +3,16 @@
 import { motion } from 'framer-motion';
 import SectionWrapper from './SectionWrapper';
 import AnimatedBackground from './AnimatedBackground';
-
-const projectTypes = [
-  'Лендинг',
-  'Корпоративный сайт',
-  'Интернет-магазин',
-  'Веб-приложение',
-  'Мобильное приложение',
-  'Другое'
-];
-
-const budgets = [
-  '50 000 – 200 000 ₽',
-  '200 000 – 500 000 ₽',
-  '500 000 – 1 000 000 ₽',
-  'от 1 000 000 ₽'
-];
+import { useLocale } from '../app/context/LocaleContext';
 
 const ContactSection = () => {
+  const { translations } = useLocale();
+  const { contactSection } = translations;
+
+  // Используем переводы из контекста
+  const projectTypes = contactSection.form.projectTypes;
+  const budgets = contactSection.form.budgets;
+
   return (
     <SectionWrapper className="relative overflow-hidden">
       <AnimatedBackground />
@@ -36,10 +28,10 @@ const ContactSection = () => {
                 className="text-center"
             >
                 <h2 className="text-4xl lg:text-5xl font-bold text-[#feda6a] mb-6">
-                  Свяжитесь с нами
+                  {contactSection.heading}
               </h2>
                 <p className="text-[#d4d4dc] text-lg max-w-2xl mx-auto">
-                  Расскажите о вашем проекте, и мы поможем воплотить его в жизнь
+                  {contactSection.description}
               </p>
             </motion.div>
             </div>
@@ -57,7 +49,7 @@ const ContactSection = () => {
                   className="space-y-12 lg:col-span-1"
                 >
                   <div className="bg-[#393f4d]/10 p-8 rounded-[2px] backdrop-blur-sm border border-[#feda6a]/10">
-                    <h3 className="text-2xl font-bold text-[#feda6a] mb-6">Контактная информация</h3>
+                    <h3 className="text-2xl font-bold text-[#feda6a] mb-6">{contactSection.contactInfo}</h3>
                     <div className="space-y-6">
                       <div className="flex items-start space-x-4">
                         <div className="w-10 h-10 rounded-full bg-[#feda6a]/20 flex items-center justify-center flex-shrink-0">
@@ -66,7 +58,7 @@ const ContactSection = () => {
                           </svg>
                         </div>
                         <div>
-                          <div className="text-[#feda6a] text-sm uppercase tracking-wider mb-1">Email</div>
+                          <div className="text-[#feda6a] text-sm uppercase tracking-wider mb-1">{contactSection.email}</div>
                           <a href="mailto:info@web3dev.com" className="text-[#d4d4dc] text-lg hover:text-[#feda6a] transition-colors">
                             info@web3dev.com
                           </a>
@@ -79,7 +71,7 @@ const ContactSection = () => {
                           </svg>
                         </div>
                         <div>
-                          <div className="text-[#feda6a] text-sm uppercase tracking-wider mb-1">Телефон</div>
+                          <div className="text-[#feda6a] text-sm uppercase tracking-wider mb-1">{contactSection.phone}</div>
                           <a href="tel:+79991234567" className="text-[#d4d4dc] text-lg hover:text-[#feda6a] transition-colors">
                             +7 (999) 123-45-67
                           </a>
@@ -111,23 +103,23 @@ const ContactSection = () => {
               transition={{ delay: 0.5 }}
                   className="bg-[#393f4d]/10 p-8 rounded-[2px] backdrop-blur-sm border border-[#feda6a]/10 lg:col-span-2"
             >
-                  <h3 className="text-2xl font-bold text-[#feda6a] mb-8">Оставьте заявку</h3>
+                  <h3 className="text-2xl font-bold text-[#feda6a] mb-8">{contactSection.form.title}</h3>
                   <form className="space-y-8">
               {/* Основная информация */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <label className="block text-[#feda6a] text-sm uppercase tracking-wider">Имя</label>
+                        <label className="block text-[#feda6a] text-sm uppercase tracking-wider">{contactSection.form.name}</label>
                   <input 
                     type="text" 
-                    placeholder="Как к вам обращаться" 
+                          placeholder={contactSection.form.namePlaceholder} 
                           className="w-full p-3 bg-[#1d1e22]/50 text-[#d4d4dc] placeholder-[#d4d4dc]/30 border border-[#393f4d] focus:border-[#feda6a] outline-none transition-colors rounded-[2px]"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-[#feda6a] text-sm uppercase tracking-wider">Компания</label>
+                        <label className="block text-[#feda6a] text-sm uppercase tracking-wider">{contactSection.form.company}</label>
                   <input 
                     type="text" 
-                    placeholder="Название вашей компании" 
+                          placeholder={contactSection.form.companyPlaceholder} 
                           className="w-full p-3 bg-[#1d1e22]/50 text-[#d4d4dc] placeholder-[#d4d4dc]/30 border border-[#393f4d] focus:border-[#feda6a] outline-none transition-colors rounded-[2px]"
                   />
                 </div>
@@ -135,22 +127,22 @@ const ContactSection = () => {
 
               {/* Тип проекта */}
               <div className="space-y-3">
-                <label className="block text-[#feda6a] text-sm uppercase tracking-wider">Тип проекта</label>
-                {/* Мобильная версия (выпадающий список) */}
-                <div className="block md:hidden">
-                  <select 
-                    className="w-full p-3 bg-[#1d1e22]/50 text-[#d4d4dc] border border-[#393f4d] focus:border-[#feda6a] outline-none transition-colors rounded-[2px]"
-                    name="projectType"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>Выберите тип проекта</option>
-                    {projectTypes.map((type) => (
-                      <option key={type} value={type}>{type}</option>
-                    ))}
-                  </select>
-                </div>
-                {/* Десктопная версия (радио-кнопки) */}
-                <div className="hidden md:grid md:grid-cols-3 gap-3">
+                      <label className="block text-[#feda6a] text-sm uppercase tracking-wider">{contactSection.form.projectType}</label>
+                      {/* Мобильная версия (выпадающий список) */}
+                      <div className="block md:hidden">
+                        <select 
+                          className="w-full p-3 bg-[#1d1e22]/50 text-[#d4d4dc] border border-[#393f4d] focus:border-[#feda6a] outline-none transition-colors rounded-[2px]"
+                          name="projectType"
+                          defaultValue=""
+                        >
+                          <option value="" disabled>Выберите тип проекта</option>
+                          {projectTypes.map((type) => (
+                            <option key={type} value={type}>{type}</option>
+                          ))}
+                        </select>
+                      </div>
+                      {/* Десктопная версия (радио-кнопки) */}
+                      <div className="hidden md:grid md:grid-cols-3 gap-3">
                   {projectTypes.map((type) => (
                     <label 
                       key={type}
@@ -161,7 +153,7 @@ const ContactSection = () => {
                         className="peer hidden" 
                         name="projectType"
                       />
-                      <div className="p-3 text-center bg-[#1d1e22]/50 border border-[#393f4d] text-[#d4d4dc] peer-checked:border-[#feda6a] peer-checked:text-[#feda6a] hover:border-[#feda6a] transition-colors rounded-[2px]">
+                            <div className="p-3 text-center bg-[#1d1e22]/50 border border-[#393f4d] text-[#d4d4dc] peer-checked:border-[#feda6a] peer-checked:text-[#feda6a] hover:border-[#feda6a] transition-colors rounded-[2px]">
                         {type}
                       </div>
                     </label>
@@ -171,22 +163,22 @@ const ContactSection = () => {
 
               {/* Бюджет */}
               <div className="space-y-3">
-                <label className="block text-[#feda6a] text-sm uppercase tracking-wider">Планируемый бюджет</label>
-                {/* Мобильная версия (выпадающий список) */}
-                <div className="block md:hidden">
-                  <select 
-                    className="w-full p-3 bg-[#1d1e22]/50 text-[#d4d4dc] border border-[#393f4d] focus:border-[#feda6a] outline-none transition-colors rounded-[2px]"
-                    name="budget"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>Выберите бюджет</option>
-                    {budgets.map((budget) => (
-                      <option key={budget} value={budget}>{budget}</option>
-                    ))}
-                  </select>
-                </div>
-                {/* Десктопная версия (радио-кнопки) */}
-                <div className="hidden md:grid md:grid-cols-2 gap-3">
+                      <label className="block text-[#feda6a] text-sm uppercase tracking-wider">{contactSection.form.budget}</label>
+                      {/* Мобильная версия (выпадающий список) */}
+                      <div className="block md:hidden">
+                        <select 
+                          className="w-full p-3 bg-[#1d1e22]/50 text-[#d4d4dc] border border-[#393f4d] focus:border-[#feda6a] outline-none transition-colors rounded-[2px]"
+                          name="budget"
+                          defaultValue=""
+                        >
+                          <option value="" disabled>Выберите бюджет</option>
+                          {budgets.map((budget) => (
+                            <option key={budget} value={budget}>{budget}</option>
+                          ))}
+                        </select>
+                      </div>
+                      {/* Десктопная версия (радио-кнопки) */}
+                      <div className="hidden md:grid md:grid-cols-2 gap-3">
                   {budgets.map((budget) => (
                     <label 
                       key={budget}
@@ -197,7 +189,7 @@ const ContactSection = () => {
                         className="peer hidden" 
                         name="budget"
                       />
-                      <div className="p-3 text-center bg-[#1d1e22]/50 border border-[#393f4d] text-[#d4d4dc] peer-checked:border-[#feda6a] peer-checked:text-[#feda6a] hover:border-[#feda6a] transition-colors rounded-[2px]">
+                            <div className="p-3 text-center bg-[#1d1e22]/50 border border-[#393f4d] text-[#d4d4dc] peer-checked:border-[#feda6a] peer-checked:text-[#feda6a] hover:border-[#feda6a] transition-colors rounded-[2px]">
                         {budget}
                       </div>
                     </label>
@@ -205,48 +197,46 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              {/* Контакты */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <label className="block text-[#feda6a] text-sm uppercase tracking-wider">Email</label>
+                    {/* Контактные данные */}
+                    <div>
+                      <label className="block text-[#feda6a] text-sm uppercase tracking-wider mb-2">{contactSection.form.contactDetails}</label>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
                   <input 
                     type="email" 
-                    placeholder="your@email.com"
-                          className="w-full p-3 bg-[#1d1e22]/50 text-[#d4d4dc] placeholder-[#d4d4dc]/30 border border-[#393f4d] focus:border-[#feda6a] outline-none transition-colors rounded-[2px]"
+                            placeholder={contactSection.form.emailPlaceholder} 
+                            className="w-full p-3 bg-[#1d1e22]/50 text-[#d4d4dc] placeholder-[#d4d4dc]/30 border border-[#393f4d] focus:border-[#feda6a] outline-none transition-colors rounded-[2px]"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="block text-[#feda6a] text-sm uppercase tracking-wider">Телефон</label>
-                  <div className="flex">
-                          <span className="p-3 bg-[#1d1e22]/50 text-[#d4d4dc] border border-[#393f4d] rounded-[2px]">+7</span>
+                        <div>
                     <input 
                       type="tel" 
-                      placeholder="(999) 999-99-99" 
-                            className="flex-1 p-3 bg-[#1d1e22]/50 text-[#d4d4dc] placeholder-[#d4d4dc]/30 border border-l-0 border-[#393f4d] focus:border-[#feda6a] outline-none transition-colors rounded-[2px]"
+                            placeholder={contactSection.form.phonePlaceholder} 
+                            className="w-full p-3 bg-[#1d1e22]/50 text-[#d4d4dc] placeholder-[#d4d4dc]/30 border border-[#393f4d] focus:border-[#feda6a] outline-none transition-colors rounded-[2px]"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Описание проекта */}
+                    {/* О проекте */}
               <div className="space-y-2">
-                <label className="block text-[#feda6a] text-sm uppercase tracking-wider">О вашем проекте</label>
+                      <label className="block text-[#feda6a] text-sm uppercase tracking-wider">{contactSection.form.project}</label>
                 <textarea 
-                  rows={4}
-                  placeholder="Расскажите о ваших целях, задачах и ожиданиях от проекта"
+                        placeholder={contactSection.form.projectPlaceholder} 
+                        rows={5}
                         className="w-full p-3 bg-[#1d1e22]/50 text-[#d4d4dc] placeholder-[#d4d4dc]/30 border border-[#393f4d] focus:border-[#feda6a] outline-none transition-colors rounded-[2px] resize-none"
                 ></textarea>
               </div>
 
               {/* Кнопка отправки */}
-              <motion.button 
+                    <div className="pt-4">
+                      <button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                      className="w-full px-8 py-3 bg-[#feda6a] text-[#1d1e22] font-medium hover:bg-[#feda6a]/90 transition-colors rounded-lg"
-              >
-                Отправить заявку
-              </motion.button>
+                        className="w-full md:w-auto px-10 py-4 bg-[#feda6a] text-black font-bold rounded-[2px] hover:bg-[#feda6a]/90 transition-colors"
+                      >
+                        {contactSection.form.submit}
+                      </button>
+                    </div>
                   </form>
                 </motion.div>
               </div>

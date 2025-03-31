@@ -3,22 +3,22 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import AnimatedBackground from './AnimatedBackground';
-
-const socialLinks = [
-  { name: 'Telegram', url: 'https://t.me/mishlenteam' },
-  { name: 'WhatsApp', url: 'https://wa.me/message/YWPQD6DCDXBPA1' },
-  { name: 'Instagram', url: '#' },
-  { name: 'GitHub', url: 'https://github.com/burkovmu' }
-];
-
-const navLinks = [
-  { name: 'О нас', url: '/about' },
-  { name: 'Услуги', url: '/services' },
-  { name: 'Проекты', url: '/projects' },
-  { name: 'Контакты', url: '/contacts' }
-];
+import { useLocale } from '../app/context/LocaleContext';
 
 export default function Footer() {
+  const { translations } = useLocale();
+  const { footer } = translations;
+
+  const socialLinks = [
+    { name: 'Telegram', url: 'https://t.me/mishlenteam' },
+    { name: 'WhatsApp', url: 'https://wa.me/message/YWPQD6DCDXBPA1' },
+    { name: 'Instagram', url: '#' },
+    { name: 'GitHub', url: 'https://github.com/burkovmu' }
+  ];
+
+  // Получаем ссылки навигации из переводов
+  const navLinks = footer.links;
+
   return (
     <footer className="relative overflow-hidden">
       <AnimatedBackground variant="contact" />
@@ -104,7 +104,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="mt-16 pt-8 border-t border-[#393f4d] flex flex-col md:flex-row justify-between items-center gap-4 text-[#d4d4dc]/40"
           >
-            <p className="text-center md:text-left">© 2024 Mishlen Team. Все права защищены.</p>
+            <p className="text-center md:text-left">© 2024 Mishlen Team. {footer.rights}</p>
             <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-center md:text-left">
               <Link href="/privacy" className="hover:text-[#feda6a] transition-colors">
                 Политика конфиденциальности
