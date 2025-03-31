@@ -59,8 +59,8 @@ const ContactSection = () => {
                         </div>
                         <div>
                           <div className="text-[#feda6a] text-sm uppercase tracking-wider mb-1">{contactSection.email}</div>
-                          <a href="mailto:info@web3dev.com" className="text-[#d4d4dc] text-lg hover:text-[#feda6a] transition-colors">
-                            info@web3dev.com
+                          <a href="mailto:burkovmu@gmail.com" className="text-[#d4d4dc] text-lg hover:text-[#feda6a] transition-colors">
+                            burkovmu@gmail.com
                           </a>
                         </div>
                       </div>
@@ -72,25 +72,10 @@ const ContactSection = () => {
                         </div>
                         <div>
                           <div className="text-[#feda6a] text-sm uppercase tracking-wider mb-1">{contactSection.phone}</div>
-                          <a href="tel:+79991234567" className="text-[#d4d4dc] text-lg hover:text-[#feda6a] transition-colors">
-                            +7 (999) 123-45-67
+                          <a href="tel:+79939073077" className="text-[#d4d4dc] text-lg hover:text-[#feda6a] transition-colors">
+                            +7 (993) 907-30-77
                           </a>
                         </div>
-                      </div>
-                      
-                      <div className="flex flex-row space-x-4 mt-6">
-                        <a href="https://t.me/mishlenteam" target="_blank" rel="noopener noreferrer" 
-                           className="w-10 h-10 rounded-full bg-[#feda6a]/20 flex items-center justify-center hover:bg-[#feda6a]/40 transition-colors">
-                          <svg className="w-5 h-5 text-[#feda6a]" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.065-1.225-.461-1.9-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.178.121.13.156.305.165.472.009.167-.018.371-.027.522z"/>
-                          </svg>
-                        </a>
-                        <a href="https://wa.me/message/YWPQD6DCDXBPA1" target="_blank" rel="noopener noreferrer"
-                           className="w-10 h-10 rounded-full bg-[#feda6a]/20 flex items-center justify-center hover:bg-[#feda6a]/40 transition-colors">
-                          <svg className="w-5 h-5 text-[#feda6a]" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.72.045.419-.1.824z M20.52 3.449C12.831-3.984.521 1.66.001 11.65c-.152 2.9.423 5.731 1.67 8.228L0 24l4.254-1.615c2.395 1.18 5.083 1.801 7.807 1.803 9.426 0 14.844-7.92 14.843-15.425.001-2.087-.566-4.108-1.64-5.868-1-1.659-2.388-3.048-4.066-4.05-1.677-1.001-3.589-1.529-5.558-1.527-.29 0-.58.012-.87.037z" stroke="none" />
-                          </svg>
-                        </a>
                       </div>
                     </div>
                   </div>
