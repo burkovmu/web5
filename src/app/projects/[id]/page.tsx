@@ -203,7 +203,9 @@ export default function ProjectPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 container mx-auto px-4 py-16">
+        
+        {/* Заголовок с описанием для Desktop версии */}
+        <div className="absolute bottom-0 left-0 right-0 container mx-auto px-4 py-16 hidden md:block">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -224,6 +226,29 @@ export default function ProjectPage() {
             </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* Заголовок с описанием для мобильной версии */}
+      <div className="md:hidden w-full bg-black px-4 py-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-4xl"
+        >
+          <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
+          <p className="text-lg text-gray-300 mb-6">{project.description}</p>
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.map((tech, index) => (
+              <span
+                key={index}
+                className="px-3 py-1 bg-white/10 rounded-full text-xs"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
 
       {/* Main Content */}

@@ -90,12 +90,12 @@ export default function ProjectsSection() {
                       fill
                       className="object-cover transform group-hover:scale-105 transition-transform duration-700"
                     />
-                    {/* Мобильный оверлей для улучшения читаемости текста */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 lg:hidden" />
+                    {/* Видимый только на больших экранах оверлей для наложения текста */}
+                    <div className="absolute inset-0 hidden lg:block"></div>
                   </div>
 
                   {/* Информация о проекте */}
-                  <div className="relative">
+                  <div className="relative mt-6 lg:mt-0">
                     <div className="absolute -left-4 top-0 w-[2px] h-full bg-[#feda6a]/20 group-hover:bg-[#feda6a] transition-colors duration-500" />
                     <div className="pl-8">
                       <div className="flex items-center gap-4 mb-4">
