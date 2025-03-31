@@ -605,7 +605,7 @@ export default function ProjectPage() {
 
               <div className="space-y-4">
                 <Link 
-                  href="/#projects" 
+                  href="/#cases" 
                   className="block w-full"
                 >
                   <button className="w-full px-6 py-3 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors flex items-center justify-center gap-2">
