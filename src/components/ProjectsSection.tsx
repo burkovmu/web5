@@ -90,6 +90,8 @@ export default function ProjectsSection() {
                       fill
                       className="object-cover transform group-hover:scale-105 transition-transform duration-700"
                     />
+                    {/* Мобильный оверлей для улучшения читаемости текста */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 lg:hidden" />
                   </div>
 
                   {/* Информация о проекте */}
@@ -105,19 +107,19 @@ export default function ProjectsSection() {
                         </span>
                       </div>
                       
-                      <h3 className="text-4xl lg:text-5xl font-stolzl text-[#d4d4dc] mb-6 group-hover:text-[#feda6a] transition-colors duration-300">
+                      <h3 className="text-3xl md:text-4xl lg:text-5xl font-stolzl text-[#d4d4dc] mb-4 md:mb-6 group-hover:text-[#feda6a] transition-colors duration-300">
                         {project.title}
                       </h3>
                       
-                      <p className="text-[#d4d4dc]/60 text-lg mb-8 leading-relaxed max-w-xl">
+                      <p className="text-[#d4d4dc]/80 text-base md:text-lg mb-6 md:mb-8 leading-relaxed max-w-xl">
                         {project.description}
                       </p>
 
-                      <div className="flex flex-wrap gap-3 mb-8">
+                      <div className="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-8">
                         {project.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-4 py-2 bg-[#1d1e22]/40 backdrop-blur-sm rounded-full text-sm text-[#d4d4dc]/60 border border-[#393f4d]/20 group-hover:border-[#feda6a]/20 group-hover:text-[#feda6a]/80 transition-all duration-300"
+                            className="px-3 py-1 md:px-4 md:py-2 bg-[#1d1e22]/40 backdrop-blur-sm rounded-full text-xs md:text-sm text-[#d4d4dc]/60 border border-[#393f4d]/20 group-hover:border-[#feda6a]/20 group-hover:text-[#feda6a]/80 transition-all duration-300"
                           >
                             {tech}
                           </span>

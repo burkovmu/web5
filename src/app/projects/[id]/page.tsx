@@ -210,13 +210,13 @@ export default function ProjectPage() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <h1 className="text-5xl font-bold mb-6">{project.title}</h1>
-            <p className="text-xl text-gray-300 mb-8">{project.description}</p>
-            <div className="flex flex-wrap gap-4">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">{project.title}</h1>
+            <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8">{project.description}</p>
+            <div className="flex flex-wrap gap-2 md:gap-4">
               {project.technologies.map((tech, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-white/10 rounded-full text-sm"
+                  className="px-3 py-1 md:px-4 md:py-2 bg-white/10 rounded-full text-xs md:text-sm"
                 >
                   {tech}
                 </span>
