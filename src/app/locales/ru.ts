@@ -147,11 +147,11 @@ export const ru = {
   footer: {
     rights: 'Все права защищены',
     links: [
-      { name: 'Главная', url: '/' },
-      { name: 'О нас', url: '/about' },
-      { name: 'Услуги', url: '/services' },
-      { name: 'Кейсы', url: '/projects' },
-      { name: 'Контакты', url: '/contacts' }
+      { name: 'Главная', url: '/#hero' },
+      { name: 'О нас', url: '/#about' },
+      { name: 'Услуги', url: '/#services' },
+      { name: 'Кейсы', url: '/#cases' },
+      { name: 'Контакты', url: '/#contact' }
     ]
   },
 

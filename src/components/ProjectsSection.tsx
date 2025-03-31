@@ -7,7 +7,8 @@ import SectionWrapper from './SectionWrapper';
 import AnimatedBackground from './AnimatedBackground';
 import { useLocale } from '../app/context/LocaleContext';
 
-const projects = [
+// Проекты на русском языке
+const projectsRu = [
   {
     id: 'project1',
     title: 'Аренда автомобилей в Дубае',
@@ -46,9 +47,52 @@ const projects = [
   }
 ];
 
+// Проекты на английском языке
+const projectsEn = [
+  {
+    id: 'project1',
+    title: 'Car Rental in Dubai',
+    description: 'Development of a modern website for premium car rental in Dubai with a convenient booking and payment system.',
+    image: '/project1.jpg',
+    category: 'Web Development',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    link: '/projects/project1'
+  },
+  {
+    id: 'project2',
+    title: 'Special Equipment Rental',
+    description: 'Creating a specialized platform for construction and special equipment rental with an expanded catalog and order management system.',
+    image: '/project2.jpg',
+    category: 'Full Stack',
+    technologies: ['Vue.js', 'Node.js', 'MongoDB', 'Express'],
+    link: '/projects/project2'
+  },
+  {
+    id: 'project3',
+    title: 'Apple Service Center',
+    description: 'Development of a modern website for Apple equipment repair service center with repair status tracking system.',
+    image: '/project3.jpg',
+    category: 'Web App',
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
+    link: '/projects/project3'
+  },
+  {
+    id: 'project4',
+    title: 'Restaurant Website',
+    description: 'Creating a modern restaurant website with online table reservation and food delivery systems.',
+    image: '/project4.jpg',
+    category: 'Web Development',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js'],
+    link: '/projects/project4'
+  }
+];
+
 export default function ProjectsSection() {
-  const { translations } = useLocale();
+  const { translations, locale } = useLocale();
   const { projectsSection } = translations;
+  
+  // Выбор данных проектов в зависимости от текущей локали
+  const projects = locale === 'ru' ? projectsRu : projectsEn;
 
   return (
     <SectionWrapper className="relative w-full overflow-x-hidden">

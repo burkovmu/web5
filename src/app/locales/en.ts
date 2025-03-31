@@ -147,11 +147,11 @@ export const en = {
   footer: {
     rights: 'All rights reserved',
     links: [
-      { name: 'Home', url: '/' },
-      { name: 'About', url: '/about' },
-      { name: 'Services', url: '/services' },
-      { name: 'Cases', url: '/projects' },
-      { name: 'Contact', url: '/contacts' }
+      { name: 'Home', url: '/#hero' },
+      { name: 'About', url: '/#about' },
+      { name: 'Services', url: '/#services' },
+      { name: 'Cases', url: '/#cases' },
+      { name: 'Contact', url: '/#contact' }
     ]
   },
 
