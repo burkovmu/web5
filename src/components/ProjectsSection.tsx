@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import SectionWrapper from './SectionWrapper';
 import AnimatedBackground from './AnimatedBackground';
+import { useLocale } from '../app/context/LocaleContext';
 
 const projects = [
   {
@@ -46,19 +47,22 @@ const projects = [
 ];
 
 export default function ProjectsSection() {
+  const { translations } = useLocale();
+  const { projectsSection } = translations;
+
   return (
     <SectionWrapper className="relative w-full overflow-x-hidden">
       <AnimatedBackground variant="projects" />
       <div className="w-full md:w-[90%] mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col items-start mb-20">
           <span className="text-[#feda6a] uppercase tracking-[0.3em] text-xs font-stolzl mb-6">
-            Наши проекты
+            {projectsSection.title}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            Реализованные проекты
+            {projectsSection.heading}
           </h2>
           <p className="text-[#d4d4dc] text-lg md:text-xl max-w-3xl">
-            Посмотрите на наши последние работы и убедитесь в качестве наших услуг
+            {projectsSection.description}
           </p>
         </div>
 
@@ -121,7 +125,7 @@ export default function ProjectsSection() {
                       </div>
 
                       <div className="inline-flex items-center gap-3 text-[#feda6a] group-hover:translate-x-2 transition-transform duration-300">
-                        <span className="text-sm uppercase tracking-wider">Подробнее</span>
+                        <span className="text-sm uppercase tracking-wider">{projectsSection.viewCase}</span>
                         <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
                           <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>

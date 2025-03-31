@@ -6,7 +6,7 @@ import AnimatedBackground from './AnimatedBackground';
 import { useLocale } from '../app/context/LocaleContext';
 
 export default function Footer() {
-  const { translations } = useLocale();
+  const { translations, locale } = useLocale();
   const { footer } = translations;
 
   const socialLinks = [
@@ -18,6 +18,29 @@ export default function Footer() {
 
   // Получаем ссылки навигации из переводов
   const navLinks = footer.links;
+
+  // Многоязычные тексты для футера
+  const footerContent = {
+    ru: {
+      heading: "Давайте создадим<br />что-то особенное",
+      description: "Свяжитесь с нами, чтобы обсудить ваш проект и начать воплощать идеи в жизнь",
+      social: "Соцсети",
+      navigation: "Навигация",
+      privacy: "Политика конфиденциальности",
+      terms: "Условия использования"
+    },
+    en: {
+      heading: "Let's create<br />something special",
+      description: "Contact us to discuss your project and start bringing ideas to life",
+      social: "Social",
+      navigation: "Navigation",
+      privacy: "Privacy Policy",
+      terms: "Terms of Use"
+    }
+  };
+
+  const currentLang = locale as keyof typeof footerContent;
+  const content = footerContent[currentLang];
 
   return (
     <footer className="relative overflow-hidden">
@@ -35,11 +58,10 @@ export default function Footer() {
               >
                 <div className="absolute -left-4 top-0 w-[2px] h-full bg-[#feda6a]/20" />
                 <div className="pl-8">
-                  <h3 className="text-3xl lg:text-4xl font-stolzl text-[#d4d4dc] mb-6">
-                    Давайте создадим<br />что-то особенное
-                  </h3>
+                  <h3 className="text-3xl lg:text-4xl font-stolzl text-[#d4d4dc] mb-6" 
+                      dangerouslySetInnerHTML={{__html: content.heading}} />
                   <p className="text-[#d4d4dc]/60 text-lg max-w-md">
-                    Свяжитесь с нами, чтобы обсудить ваш проект и начать воплощать идеи в жизнь
+                    {content.description}
                   </p>
                 </div>
               </motion.div>
@@ -49,7 +71,7 @@ export default function Footer() {
             <div className="grid grid-cols-2 gap-8">
               {/* Социальные сети */}
               <div className="space-y-6">
-                <h4 className="text-[#feda6a] text-sm uppercase tracking-wider">Соцсети</h4>
+                <h4 className="text-[#feda6a] text-sm uppercase tracking-wider">{content.social}</h4>
                 <ul className="space-y-4">
                   {socialLinks.map((link) => (
                     <motion.li 
@@ -74,7 +96,7 @@ export default function Footer() {
 
               {/* Навигация */}
               <div className="space-y-6">
-                <h4 className="text-[#feda6a] text-sm uppercase tracking-wider">Навигация</h4>
+                <h4 className="text-[#feda6a] text-sm uppercase tracking-wider">{content.navigation}</h4>
                 <ul className="space-y-4">
                   {navLinks.map((link) => (
                     <motion.li 
@@ -107,10 +129,10 @@ export default function Footer() {
             <p className="text-center md:text-left">© 2024 Mishlen Team. {footer.rights}</p>
             <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-center md:text-left">
               <Link href="/privacy" className="hover:text-[#feda6a] transition-colors">
-                Политика конфиденциальности
+                {content.privacy}
               </Link>
               <Link href="/terms" className="hover:text-[#feda6a] transition-colors">
-                Условия использования
+                {content.terms}
               </Link>
             </div>
           </motion.div>
