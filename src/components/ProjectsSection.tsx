@@ -20,10 +20,10 @@ const projectsRu = [
   },
   {
     id: 'project2',
-    title: 'Аренда Спец Техники',
+    title: 'Аренда СПЕЦТЕХНИКИ',
     description: 'Создание специализированной платформы для аренды строительной и специальной техники с расширенным каталогом и системой управления заказами.',
     image: '/project2.jpg',
-    category: 'Full Stack',
+    category: 'УРАЛСПЕЦТЕХ',
     technologies: ['Vue.js', 'Node.js', 'MongoDB', 'Express'],
     link: '/projects/project2'
   },
